@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homescreen Countdown Widget</title>  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .widget {
+      width: 340px;
+      background: rgba(20,20,20,0.95);
+      border-radius: 35px;
+      padding: 25px;
+      box-shadow: 0 0 35px rgba(255,255,255,0.08);
+      color: white;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    .live {
+      font-size: 0.9rem;
+      color: #00ff88;
+    }
+
+    .main-number {
+      font-size: 4rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .main-label {
+      text-align: center;
+      color: #999;
+      margin-bottom: 25px;
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 15px 10px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .small-number {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .small-label {
+      margin-top: 6px;
+      color: #aaa;
+      font-size: 0.8rem;
+    }
+
+    .footer {
+      margin-top: 22px;
+      text-align: center;
+      color: #666;
+      font-size: 0.85rem;
+    }
+  </style></head>
+<body><div class="widget">
+  <div class="top">
+    <div class="title">S ❤️ M • 12 Nov 2026</div>
+    <div class="live">● LIVE</div>
+  </div>  <div class="main-number" id="days">0</div>
+  <div class="main-label">Until Our Marriage 💍</div>  <div class="grid">
+    <div class="card">
+      <div class="small-number" id="hours">0</div>
+      <div class="small-label">Hours</div>
+    </div><div class="card">
+  <div class="small-number" id="minutes">0</div>
+  <div class="small-label">Minutes</div>
+</div>
+
+<div class="card">
+  <div class="small-number" id="seconds">0</div>
+  <div class="small-label">Seconds</div>
+</div>
+
+  </div>  <div class="footer">
+    <div id="totalHours">0 Total Hours Left</div>
+    <div style="margin-top:8px;">S ❤️ M Forever</div>
+  </div>
+</div><script>
+  const targetDate = new Date('2026-11-12T00:00:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const totalHours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('days').innerText = days;
+    document.getElementById('hours').innerText = hours;
+    document.getElementById('minutes').innerText = minutes;
+    document.getElementById('seconds').innerText = seconds;
+    document.getElementById('totalHours').innerText = totalHours + ' Total Hours Left';
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script></body>
+  </html>
