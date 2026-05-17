@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sweet Mess — Saleem ❤️ Anarkali</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Mess — Final Updated</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:Poppins,sans-serif;background:#fff8f8;color:#442;scroll-behavior:smooth}*{box-sizing:border-box}nav{position:fixed;top:0;width:100%;background:#1e0d12e6;padding:12px;display:flex;justify-content:center;gap:14px;z-index:100}nav a{color:#fff;text-decoration:none;font-size:12px}section{padding:80px 18px;max-width:900px;margin:auto}.hero{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;position:relative}.hero:before{content:'';position:absolute;inset:0;background:url('hero.jpg') center/cover;filter:blur(7px) brightness(.4);transform:scale(1.1);z-index:-1}.card{background:#ffffff1a;backdrop-filter:blur(12px);padding:28px;border-radius:26px;color:#fff}.circle{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid #fff}.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px}.box{background:#ffffff1a;padding:12px;border-radius:14px}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.gallery img,.float{width:100%;border-radius:18px}.chat{display:flex;flex-direction:column;gap:8px;margin:20px 0}.b1,.b2{padding:12px 16px;border-radius:18px;max-width:78%}.b1{background:#1e0d12;color:#fff}.b2{background:#c8536a;color:#fff;margin-left:auto}.float{position:fixed;width:80px;height:80px;opacity:.2;object-fit:cover;animation:f 14s linear infinite;z-index:-1;border-radius:50%}@keyframes f{from{transform:translateY(-100px)}to{transform:translateY(110vh)}}button{padding:12px 22px;border:none;border-radius:30px;background:#c8536a;color:#fff}.popup{display:none;position:fixed;inset:0;background:#0008;justify-content:center;align-items:center}.pop{background:#fff;padding:24px;border-radius:20px;max-width:400px}.music{display:none}
+*{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:#fff8f8;color:#442;overflow-x:hidden}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:center;gap:12px;padding:12px;background:rgba(30,13,18,.92);backdrop-filter:blur(10px);z-index:99}
+nav a{color:#fff;text-decoration:none;font-size:.8rem}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:90px 20px 40px;position:relative;text-align:center;background:linear-gradient(135deg,#fde7ee,#fff)}
+.hero-card{background:rgba(255,255,255,.18);backdrop-filter:blur(15px);padding:30px;border-radius:28px;max-width:430px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.12)}
+.hero-img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 0 20px rgba(0,0,0,.12)}
+h1{font-family:'Dancing Script',cursive;font-size:4rem;color:#8a3350}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}.box{background:#fff;padding:12px;border-radius:14px}
+section{padding:70px 20px;max-width:950px;margin:auto}.title{text-align:center;font-family:'Playfair Display',serif;font-size:2rem;color:#8a3350;margin-bottom:25px}
+.story,.quote{text-align:center;line-height:2}.quote{background:#fff;padding:24px;border-left:4px solid #d85c85;border-radius:14px;margin-top:20px}
+.chat{max-width:700px;margin:25px auto}.bubble{padding:12px 16px;border-radius:18px;margin:10px 0;max-width:78%}.left{background:#2b1a1e;color:#fff}.right{background:#d85c85;color:#fff;margin-left:auto}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.gallery img,.float-photo img{width:100%;border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.1)}
+.float-wrap{position:relative;height:260px}.float-photo{position:absolute;width:140px;animation:float 6s ease-in-out infinite}.f1{left:10%;top:10%}.f2{left:40%;top:40%}.f3{right:10%;top:15%}
+@keyframes float{50%{transform:translateY(-18px)}}
+footer{text-align:center;padding:25px;color:#999}
+.music{position:fixed;bottom:10px;right:10px;z-index:100}
 </style>
-</head><body>
-<nav><a href="#home">Home</a><a href="#story">Story</a><a href="#gallery">Gallery</a><a href="#letter">Letter</a><a href="#count">Nikah</a></nav>
-<img src="hero.jpg" class="float" style="left:5%"><img src="memory2.jpg" class="float" style="left:80%;animation-duration:18s"><img src="hero.jpg" class="float" style="left:50%;animation-duration:20s">
-<audio class="music" controls autoplay loop><source src="music.mp3" type="audio/mpeg"></audio>
-<section class="hero" id="home"><div class="card"><img src="hero.jpg" class="circle"><h1 style="font-family:'Dancing Script';font-size:60px">Sweet Mess</h1><p>Saleem ❤️ Anarkali<br>Combined version of your original + upgraded design</p><div class="count" id="count"><div class="box"><h2 id="d">0</h2>Days</div><div class="box"><h2 id="h">0</h2>Hours</div><div class="box"><h2 id="m">0</h2>Min</div><div class="box"><h2 id="s">0</h2>Sec</div></div></div></section>
-<section id="story"><h2>Hamari Kahani</h2><p>Sab ek Assalam o Alaikum se shuru hua — phir aapki purani story + naye sections saath hain.</p><div class="chat"><div class="b1">Mera data kitabon mein nahi hai Madam 😂</div><div class="b2">Phir kahan milega?</div><div class="b1">Jahan abhi aapka dimag hai — WhatsApp screen par 😂</div><div class="b2">Nahi hai 🙄</div><div class="b1">Aankhein to hain 😏</div><div class="b2">Btate hi nahi mujhe kuch 🤦🏻‍♀️😂</div></div></section>
-<section id="gallery"><h2>Yaadein 📸</h2><div class="gallery"><img src="hero.jpg"><img src="memory2.jpg"></div></section>
-<section><h2>More Chats 💬</h2><div class="chat"><div class="b2">Ek to k baad aap ache honge?</div><div class="b1">Main tumhain chorne ke bajaye sudharunga 😂</div><div class="b2">Ji InshaAllah 🥺</div></div></section>
-<section id="letter"><h2>Ek Chhupa Hua Paigham 💌</h2><button onclick="document.getElementById('p').style.display='flex'">Open Secret</button></section>
-<div class="popup" id="p"><div class="pop"><p>Tum meri duaon ka sab se khubsurat jawab ho ❤️</p><button onclick="document.getElementById('p').style.display='none'">Close</button></div></div>
-<script>function u(){let t=new Date('2026-11-12T00:00:00+05:00').getTime(),n=Date.now(),x=t-n;if(x<0)return;d.innerText=Math.floor(x/86400000);h.innerText=Math.floor(x/3600000%24);m.innerText=Math.floor(x/60000%60);s.innerText=Math.floor(x/1000%60)}setInterval(u,1000);u();</script>
-</body></html>
+</head>
+<body>
+<nav><a href="#home">Home</a><a href="#story">Story</a><a href="#gallery">Gallery</a><a href="#letter">Letter</a></nav>
+<section class="hero" id="home"><div class="hero-card"><img src="hero.jpg" class="hero-img"><h1>Sweet Mess</h1><p>Saleem ❤️ Anarkali — Our imperfect little forever</p><div class="count"><div class="box"><h2 id="d">0</h2><span>Days</span></div><div class="box"><h2 id="h">0</h2><span>Hours</span></div><div class="box"><h2 id="m">0</h2><span>Min</span></div><div class="box"><h2 id="s">0</h2><span>Sec</span></div></div></div></section>
+<section id="story"><h2 class="title">Hamari Chats 💬</h2><div class="chat"><div class="bubble left">Mera data kitabon mein nahi hai Madam 😂</div><div class="bubble right">Phir kahan milega?</div><div class="bubble left">Jahan abhi aapka dimag hai 😏</div><div class="bubble right">Nahi hai 🙄</div><div class="bubble left">Apni pareshani share karo, shadi ke baad main hoon na ❤️</div></div><div class="quote">Sab ek Assalam o Alaikum se shuru hua… aur zindagi ka hissa ban gaya.</div></section>
+<section id="gallery"><h2 class="title">Memory Gallery 📸</h2><div class="gallery"><img src="memory1.jpg"><img src="photo3.jpg"><img src="photo4.jpg"></div><h2 class="title" style="margin-top:45px">Floating Memories ✨</h2><div class="float-wrap"><div class="float-photo f1"><img src="memory1.jpg"></div><div class="float-photo f2"><img src="photo3.jpg"></div><div class="float-photo f3"><img src="photo4.jpg"></div></div></section>
+<section id="letter"><h2 class="title">Ek Chhupa Hua Paigham 💌</h2><div class="quote">Tum meri zindagi ka wo sukoon ho jo har dua ke baad milta hai. 12 Nov 2026 ka intezar sirf date nahi — poori zindagi ka naya safar hai.</div></section>
+<footer>Made with ❤️ by Saleem — Sweet Mess Forever</footer>
+<audio autoplay loop controls class="music"><source src="music.mp3" type="audio/mpeg"></audio>
+<script>
+function updateCountdown(){const target=new Date('2026-11-12T00:00:00+05:00').getTime();const now=Date.now();const diff=target-now;if(diff<0)return;document.getElementById('d').innerText=Math.floor(diff/86400000);document.getElementById('h').innerText=Math.floor(diff/3600000)%24;document.getElementById('m').innerText=Math.floor(diff/60000)%60;document.getElementById('s').innerText=Math.floor(diff/1000)%60;}setInterval(updateCountdown,1000);updateCountdown();
+</script>
+</body>
+</html>
