@@ -163,6 +163,20 @@ footer span{color:var(--rose)}
 .confetti-btn:hover{transform:translateY(-3px)}
 .confetti-piece{position:fixed;width:10px;height:10px;border-radius:2px;pointer-events:none;z-index:9998;animation:confettiFall linear forwards}
 @keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+/* COUPLE QUIZ */
+.quiz-wrap{padding:65px 18px;background:linear-gradient(135deg,#1e0d12,#3a1020);text-align:center}
+.quiz-box{max-width:520px;margin:25px auto 0;background:rgba(255,255,255,.05);border:1px solid rgba(200,83,106,.2);border-radius:24px;padding:28px 22px}
+.quiz-q{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#f0d8df;margin-bottom:18px;line-height:1.8}
+.quiz-options{display:flex;flex-direction:column;gap:10px}
+.quiz-opt{padding:12px 18px;border-radius:14px;border:1px solid rgba(200,83,106,.25);background:rgba(255,255,255,.04);color:#ccc;cursor:pointer;font-size:.9rem;transition:.3s;text-align:left}
+.quiz-opt:hover{background:rgba(200,83,106,.15);color:#fff;border-color:var(--rose)}
+.quiz-opt.correct{background:rgba(0,200,100,.15);border-color:#00c864;color:#00c864}
+.quiz-opt.wrong{background:rgba(200,83,106,.15);border-color:#c8536a;color:#c8536a}
+.quiz-result{display:none;margin-top:25px;padding:22px;background:rgba(255,255,255,.06);border-radius:18px;border:1px solid rgba(200,83,106,.2)}
+.quiz-result h3{font-family:'Dancing Script',cursive;font-size:1.8rem;color:#f2c4ce;margin-bottom:8px}
+.quiz-result p{color:#aaa;font-size:.9rem;line-height:1.7}
+.quiz-next{margin-top:14px;padding:10px 24px;border-radius:20px;border:none;background:linear-gradient(135deg,#c8536a,#7a2136);color:#fff;cursor:pointer;font-family:'Dancing Script',cursive;font-size:1rem}
+.quiz-progress{color:#777;font-size:.78rem;margin-bottom:14px;letter-spacing:1px}
 </style>
 </head>
 <body>
@@ -407,6 +421,22 @@ footer span{color:var(--rose)}
   <p style="color:#999;font-size:.88rem;font-style:italic;margin-bottom:22px">Button dabao — aur dekho kya hota hai 🌹</p>
   <button class="confetti-btn" onclick="boom()">💕 I Love You</button>
 </div>
+ <!-- COUPLE QUIZ -->
+<div class="quiz-wrap">
+  <div class="badge lt" style="display:block;text-align:center">Kitna Jaante Ho?</div>
+  <div class="stitle lt" style="text-align:center">Couple Quiz 💑</div>
+  <p style="color:#777;font-size:.88rem;font-style:italic;margin-bottom:5px">Sawal Anarkali ke baare mein hain 😄</p>
+  <div class="quiz-box">
+    <div class="quiz-progress" id="qProgress">Question 1 / 5</div>
+    <div class="quiz-q" id="qText"></div>
+    <div class="quiz-options" id="qOptions"></div>
+    <div class="quiz-result" id="qResult">
+      <h3 id="qResultTitle"></h3>
+      <p id="qResultText"></p>
+      <button class="quiz-next" onclick="restartQuiz()">🔄 Dobara Khelo</button>
+    </div>
+  </div>
+</div>
  <footer>Made with <span>❤️</span> for the sweetest mess ever — <span>S & M Forever 🌹</span><br><br>
 <span style="font-family:'Dancing Script',cursive;font-size:1rem;color:#444">"Do pagal… ek mohabbat… aur hazaron sweet disasters!"</span></footer>
 
@@ -571,6 +601,59 @@ function boom(){
     setTimeout(()=>c.remove(), 4000);
   }
 }
+ // COUPLE QUIZ
+const quizData=[
+  {q:"Anarkali ka favourite phool kaunsa hai?",opts:["Sunflower","Chambeli","Red Rose 🌹","Lily"],ans:2},
+  {q:"Anarkali ka favourite chocolate kaunsa hai?",opts:["Dairy Milk","KitKat 🍫","Snickers","Toblerone"],ans:1},
+  {q:"Pehla salam kab hua tha?",opts:["Subah 10 baje","Dopahar 2 baje","Raat 12:35 baje 🌙","Shaam 6 baje"],ans:2},
+  {q:"Anarkali udaas ho to kya chahiye hota hai?",opts:["Shopping","Khamoshi ya Namaz 🤍","Khaana","Movie"],ans:1},
+  {q:"Anarkali ne kaunsi dua mangi thi?",opts:["Lambi umar","Bahut paisa","Hoorain na milein 🤭","Jaldi shadi"],ans:2}
+];
+let qIdx=0, score=0, answered=false;
+
+function loadQ(){
+  if(qIdx>=quizData.length){showResult();return;}
+  answered=false;
+  const q=quizData[qIdx];
+  document.getElementById('qProgress').textContent=`Question ${qIdx+1} / ${quizData.length}`;
+  document.getElementById('qText').textContent=q.q;
+  document.getElementById('qOptions').innerHTML=q.opts.map((o,i)=>
+    `<button class="quiz-opt" onclick="answerQ(${i})">${o}</button>`
+  ).join('');
+  document.getElementById('qResult').style.display='none';
+}
+
+function answerQ(i){
+  if(answered) return;
+  answered=true;
+  const opts=document.querySelectorAll('.quiz-opt');
+  const correct=quizData[qIdx].ans;
+  opts[correct].classList.add('correct');
+  if(i!==correct) opts[i].classList.add('wrong');
+  else score++;
+  setTimeout(()=>{qIdx++;loadQ();},1500);
+}
+
+function showResult(){
+  document.getElementById('qText').textContent='';
+  document.getElementById('qOptions').innerHTML='';
+  document.getElementById('qProgress').textContent='Quiz Khatam! 🎉';
+  const res=document.getElementById('qResult');
+  res.style.display='block';
+  const titles=['Nikamma ho tum! 😂','Thodi mehnat karo! 😄','Acha hai! 💕','Bohat acha! 🌹','Perfect Nikamma! 💍'];
+  const texts=[
+    'Score: 0/5 — Apni mangetar ko aur jaano! 😄',
+    `Score: ${score}/5 — Koshish achhi thi! 💕`,
+    `Score: ${score}/5 — Theek hai, aur seekho! 🌹`,
+    `Score: ${score}/5 — Mashallah! Anarkali khush hogi! 🌹`,
+    'Score: 5/5 — Tum sach mein perfect Nikamma ho! 💍🎊'
+  ];
+  document.getElementById('qResultTitle').textContent=titles[score];
+  document.getElementById('qResultText').textContent=texts[score];
+}
+
+function restartQuiz(){qIdx=0;score=0;loadQ();}
+loadQ();
 </script>
 <!-- LOVE TICKER -->
 <div class="ticker-wrap">
