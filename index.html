@@ -4,166 +4,406 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sweet Mess 💫 — S & M Forever</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--rose:#c8536a;--deep:#7a2136;--cream:#fff8f8;--dark:#1e0d12}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Poppins,sans-serif;background:var(--cream);overflow-x:hidden;color:#3d1f28}
-nav{position:fixed;top:0;width:100%;background:#1e0d12ee;display:flex;justify-content:center;gap:10px;padding:10px;z-index:100}
-nav a{color:#fff;text-decoration:none;font-size:.75rem}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px 20px;background:radial-gradient(circle,#fde8ef,#fff)}
-.photo{width:170px;height:170px;border-radius:50%;object-fit:cover;border:4px solid var(--rose);box-shadow:0 0 30px rgba(200,83,106,.25)}
-h1{font-family:'Dancing Script';font-size:4rem;color:var(--deep);margin:15px 0}
-.sub{font-family:'Playfair Display';font-style:italic;color:#777;max-width:500px}
-.count{margin-top:25px;background:#1e0d12;color:#fff;padding:20px;border-radius:20px;width:320px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}
-.box{background:#ffffff10;padding:12px;border-radius:14px}
-.box b{display:block;font-size:1.4rem}
-.sec{max-width:900px;margin:auto;padding:70px 18px}
-.title{font-family:'Playfair Display';font-size:2rem;color:var(--deep);margin-bottom:20px;text-align:center}
-.chat{display:flex;flex-direction:column;gap:10px;margin:25px 0}
-.me,.she{max-width:75%;padding:12px 16px;border-radius:18px;line-height:1.7}
-.me{align-self:left;background:#1e0d12;color:#fff;border-bottom-left-radius:5px}
-.she{align-self:flex-end;background:linear-gradient(135deg,#c8536a,#7a2136);color:#fff;border-bottom-right-radius:5px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
-.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.1)}
-.btn{background:linear-gradient(135deg,#c8536a,#7a2136);color:#fff;border:none;padding:12px 22px;border-radius:30px;cursor:pointer}
-.popup{display:none;position:fixed;inset:0;background:#0009;justify-content:center;align-items:center;padding:20px;z-index:999}
+:root{--rose:#c8536a;--deep:#7a2136;--blush:#f2c4ce;--cream:#fff8f8;--gold:#c9954c;--dark:#1e0d12;--text:#3d1f28}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text);font-family:'Poppins',sans-serif;font-weight:300;overflow-x:hidden}
+.float-pic{position:fixed;border-radius:50%;object-fit:cover;opacity:.15;pointer-events:none;z-index:0;animation:floatUp linear infinite;border:2px solid rgba(200,83,106,.25)}
+@keyframes floatUp{from{transform:translateY(105vh)}to{transform:translateY(-120px);opacity:0}}
+.petal{position:fixed;pointer-events:none;z-index:0;opacity:0;animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(-60px) rotate(0deg);opacity:.8}100%{transform:translateY(105vh) rotate(360deg);opacity:0}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,13,18,.96);backdrop-filter:blur(12px);display:flex;justify-content:center;flex-wrap:wrap;gap:4px;padding:10px 12px;border-bottom:1px solid rgba(200,83,106,.2)}
+nav a{color:#ccc;text-decoration:none;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;padding:5px 9px;border-radius:20px;transition:.3s}
+nav a:hover{color:var(--blush);background:rgba(200,83,106,.12)}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 50px;background:radial-gradient(ellipse at 50% 30%,#fce0e8,#fdf0f4 50%,var(--cream))}
+.photo-ring{width:165px;height:165px;border-radius:50%;border:4px solid var(--rose);overflow:hidden;box-shadow:0 0 0 8px rgba(200,83,106,.12),0 20px 50px rgba(200,83,106,.25);animation:pulse 3s ease infinite;background:#fce8ed;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.photo-ring img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 8px rgba(200,83,106,.12),0 20px 50px rgba(200,83,106,.2)}50%{box-shadow:0 0 0 16px rgba(200,83,106,.18),0 25px 60px rgba(200,83,106,.3)}}
+.hero-badge{font-family:'Dancing Script',cursive;font-size:1.1rem;color:var(--rose);letter-spacing:2px;margin-bottom:8px;animation:fadeUp .9s ease .2s both}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,11vw,6rem);font-weight:700;font-style:italic;color:var(--deep);line-height:1;margin-bottom:6px;animation:fadeUp .9s ease .5s both}
+.hero-sub{font-family:'Dancing Script',cursive;font-size:clamp(1.1rem,3.5vw,1.5rem);color:var(--gold);margin-bottom:14px;animation:fadeUp .9s ease .7s both}
+.hero-tag{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.88rem,2.2vw,1.05rem);color:#999;max-width:460px;line-height:1.9;margin-bottom:32px;animation:fadeUp .9s ease .9s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cw{background:rgba(30,13,18,.92);border-radius:26px;padding:20px 24px;border:1px solid rgba(200,83,106,.25);backdrop-filter:blur(10px);width:320px;max-width:95vw;text-align:center;animation:fadeUp .9s ease 1.1s both}
+.cw-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cw-label{font-size:.82rem;color:#ccc}
+.cw-live{color:#00ff88;font-size:.78rem;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.cw-days{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;color:#fff;line-height:1}
+.cw-dlbl{color:#888;font-size:.85rem;margin-bottom:16px}
+.cw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cw-box{background:rgba(255,255,255,.06);border-radius:14px;padding:11px 6px;border:1px solid rgba(255,255,255,.05)}
+.cw-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff}
+.cw-lbl{font-size:.6rem;color:#666;margin-top:2px;letter-spacing:1px;text-transform:uppercase}
+.cw-foot{margin-top:12px;color:#555;font-size:.76rem}
+.cw-total{color:#777;margin-bottom:2px}
+.scroll-hint{margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:4px;color:#bbb;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;animation:fadeUp 1s ease 2s both}
+.scroll-hint span{animation:bob 2s ease infinite;font-size:1.1rem}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.sec{padding:65px 18px;max-width:780px;margin:0 auto}
+.alt{background:linear-gradient(180deg,#fff5f7,var(--cream))}
+.drk{background:var(--dark)}
+.badge{font-family:'Dancing Script',cursive;font-size:.98rem;color:var(--rose);letter-spacing:2px;margin-bottom:5px}
+.badge.lt{color:var(--blush)}
+.stitle{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.5rem,4vw,2.2rem);color:var(--deep);margin-bottom:10px}
+.stitle.lt{color:#f0d8df}
+.div{width:48px;height:2px;background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:2px;margin-bottom:28px}
+.sp{font-size:clamp(.9rem,2vw,1.02rem);line-height:2;margin-bottom:15px}
+.cday{text-align:center;font-size:.68rem;color:#bbb;letter-spacing:2px;text-transform:uppercase;margin:16px 0 10px}
+.bubs{display:flex;flex-direction:column;gap:8px;margin:18px 0}
+.bn{font-size:.58rem;letter-spacing:1px;text-transform:uppercase;opacity:.55;margin-bottom:2px}
+.b1{background:var(--dark);color:#f0e0e5;padding:12px 16px;border-radius:18px 18px 18px 4px;max-width:78%;font-size:.9rem;line-height:1.7;align-self:flex-start}
+.b2{background:linear-gradient(135deg,var(--rose),var(--deep));color:#fff;padding:12px 16px;border-radius:18px 18px 4px 18px;max-width:78%;font-size:.9rem;line-height:1.7;align-self:flex-end}
+.qb{border-left:3px solid var(--rose);padding:15px 19px;margin:22px 0;background:rgba(200,83,106,.04);border-radius:0 12px 12px 0}
+.qb p{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.9rem,2vw,1.08rem);color:var(--deep);line-height:1.9}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:13px;margin:22px 0}
+.mcard{background:#fff;border-radius:18px;padding:18px 13px;text-align:center;box-shadow:0 4px 18px rgba(200,83,106,.08);border:1px solid rgba(200,83,106,.1);transition:.3s}
+.mcard:hover{transform:translateY(-4px)}
+.mcard .ic{font-size:1.8rem;margin-bottom:7px}
+.mcard h3{font-family:'Playfair Display',serif;font-size:.88rem;color:var(--deep);margin-bottom:4px}
+.mcard p{font-size:.78rem;color:#999;line-height:1.5}
+.car-wrap{position:relative;overflow:hidden;padding:15px 0 5px}
+.car-track{display:flex;gap:20px;transition:transform .5s cubic-bezier(.4,0,.2,1);padding:10px 16px 20px}
+.pol{flex-shrink:0;width:200px;background:#fff;padding:12px 12px 44px;border-radius:3px;box-shadow:0 8px 28px rgba(0,0,0,.14);position:relative;transition:.3s}
+.pol:nth-child(odd){transform:rotate(-2.5deg)}
+.pol:nth-child(even){transform:rotate(2deg)}
+.pol:hover{transform:rotate(0deg) scale(1.05) !important;z-index:2}
+.pol img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.pol-cap{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-family:'Dancing Script',cursive;font-size:.95rem;color:#555}
+.cbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(30,13,18,.75);color:#fff;border:none;border-radius:50%;width:38px;height:38px;font-size:1.3rem;cursor:pointer;transition:.3s}
+.cbtn:hover{background:var(--rose)}
+.cprev{left:2px}.cnext{right:2px}
+.cdots{display:flex;justify-content:center;gap:7px;margin-top:8px}
+.cdot{width:7px;height:7px;border-radius:50%;background:rgba(200,83,106,.3);cursor:pointer;transition:.3s}
+.cdot.on{background:var(--rose);transform:scale(1.3)}
+.mslist{max-width:400px;margin:22px auto 0}
+.msitem{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.msdot{width:12px;height:12px;border-radius:50%;background:var(--rose);flex-shrink:0}
+.msdot.p{background:#444}
+.msline{flex:1;height:2px;background:linear-gradient(90deg,var(--rose),rgba(200,83,106,.15))}
+.msline.p{background:#2a2a2a}
+.mslbl{font-size:.85rem;color:var(--blush)}
+.mslbl.p{color:#555}
+.msic{font-size:1rem}
+.dqbox{background:rgba(255,255,255,.05);border-radius:18px;padding:24px;text-align:center;border:1px solid rgba(200,83,106,.14);margin:16px 0}
+.dqtxt{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.95rem,2.5vw,1.12rem);color:var(--blush);line-height:1.9;margin-bottom:8px}
+.dqby{font-size:.72rem;color:#555;letter-spacing:2px;text-transform:uppercase}
+.lbtn{display:inline-block;padding:13px 26px;border:none;border-radius:30px;background:linear-gradient(135deg,var(--rose),var(--deep));color:#fff;font-family:'Dancing Script',cursive;font-size:1.15rem;cursor:pointer;box-shadow:0 7px 22px rgba(200,83,106,.28);transition:.3s}
+.lbtn:hover{transform:translateY(-3px)}
+.popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:500;justify-content:center;align-items:center;padding:18px}
 .popup.on{display:flex}
-.card{background:#fff;padding:28px;border-radius:20px;max-width:460px}
-.ai{background:#1e0d12;padding:60px 20px;text-align:center;color:#fff}
-.ai input{width:100%;max-width:420px;padding:12px 18px;border-radius:25px;border:none;margin-bottom:12px}
-.aiResult{display:none;margin-top:20px;background:#ffffff10;padding:20px;border-radius:18px;max-width:500px;margin-inline:auto}
-.float{position:fixed;border-radius:50%;opacity:.13;animation:up 20s linear infinite;pointer-events:none}
-@keyframes up{from{transform:translateY(110vh)}to{transform:translateY(-120px)}}
-.petal{position:fixed;animation:fall 8s linear infinite;opacity:.7;pointer-events:none}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
-footer{padding:25px;text-align:center;background:#120609;color:#777}
+.popbox{background:#fff;border-radius:26px;padding:38px 30px;max-width:440px;width:100%;text-align:center;position:relative;animation:popIn .4s ease}
+@keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.pclose{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#bbb}
+.ptitle{font-family:'Dancing Script',cursive;font-size:1.9rem;color:var(--rose);margin-bottom:14px}
+.pbody{font-family:'Playfair Display',serif;font-style:italic;font-size:1.02rem;line-height:2;color:var(--text)}
+.psign{font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--gold);margin-top:14px}
+.ai-wrap{background:linear-gradient(135deg,#1e0d12,#3a1020);padding:65px 18px}
+.ai-inner{max-width:680px;margin:0 auto;text-align:center}
+.ai-input{width:100%;max-width:480px;padding:14px 20px;border-radius:30px;border:1px solid rgba(200,83,106,.35);background:rgba(255,255,255,.07);color:#fff;font-family:'Poppins',sans-serif;font-size:.92rem;outline:none;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto}
+.ai-input::placeholder{color:#666}
+.ai-btn{padding:13px 26px;border-radius:30px;border:none;background:linear-gradient(135deg,var(--rose),var(--deep));color:#fff;font-family:'Dancing Script',cursive;font-size:1.1rem;cursor:pointer;box-shadow:0 6px 18px rgba(200,83,106,.28);transition:.3s}
+.ai-btn:hover{transform:translateY(-2px)}
+.ai-result{display:none;background:rgba(255,255,255,.05);border:1px solid rgba(200,83,106,.2);border-radius:22px;padding:28px 24px;margin-top:16px}
+.ai-text{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.97rem,2.4vw,1.12rem);color:#f0d8df;line-height:2}
+.ai-sign{font-family:'Dancing Script',cursive;font-size:1.15rem;color:var(--gold);margin-top:14px}
+.ai-loading{display:none;color:var(--blush);font-style:italic;margin-top:18px;font-size:.9rem}
+.ai-reload{margin-top:14px;padding:9px 20px;border-radius:18px;border:1px solid rgba(200,83,106,.3);background:transparent;color:var(--blush);cursor:pointer;font-size:.82rem}
+.fcount{background:var(--dark);padding:48px 18px;text-align:center}
+.fc-title{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,3.5vw,1.6rem);color:#f0d8df;margin:7px 0 26px}
+.fc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;max-width:360px;margin:0 auto}
+.fc-box{background:rgba(255,255,255,.06);border-radius:14px;padding:13px 6px;border:1px solid rgba(200,83,106,.13)}
+.fc-num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:#fff}
+.fc-lbl{font-size:.6rem;color:#666;margin-top:2px;letter-spacing:1px;text-transform:uppercase}
+footer{background:#120609;padding:24px 18px;text-align:center;color:#3a3a3a;font-size:.78rem;letter-spacing:1px}
+footer span{color:var(--rose)}
+@media(max-width:480px){nav a{font-size:.62rem;padding:4px 6px}.popbox{padding:28px 18px}}
 </style>
 </head>
 <body>
 
-<img src="hero.jpg" class="float" style="width:80px;height:80px;left:5%">
-<img src="memory2.jpg" class="float" style="width:70px;height:70px;left:80%;animation-duration:25s">
-<img src="photo3.jpg" class="float" style="width:90px;height:90px;left:45%;animation-duration:22s">
-<img src="photo4.jpg" class="float" style="width:65px;height:65px;left:20%;animation-duration:18s">
+<img src="hero.jpg" class="float-pic" style="width:85px;height:85px;left:4%;animation-duration:16s;animation-delay:0s">
+<img src="memory2.jpg" class="float-pic" style="width:68px;height:68px;left:78%;animation-duration:21s;animation-delay:5s">
+<img src="hero.jpg" class="float-pic" style="width:100px;height:100px;left:46%;animation-duration:25s;animation-delay:10s">
+<img src="memory2.jpg" class="float-pic" style="width:60px;height:60px;left:20%;animation-duration:19s;animation-delay:14s">
 
 <nav>
-<a href="#home">Home</a>
-<a href="#story">Story</a>
-<a href="#gallery">Gallery</a>
-<a href="#ai">Dil Ki Baat</a>
+  <a href="#home">Home</a><a href="#story">Story</a><a href="#ch2">Ch.2</a>
+  <a href="#gallery">Gallery</a><a href="#ai">Dil Ki Baat</a>
+  <a href="#letter">Letter</a><a href="#nikah">Nikah</a>
 </nav>
 
 <section class="hero" id="home">
-<img src="hero.jpg" class="photo">
-<h1>Sweet Mess</h1>
-<div class="sub">Because love is never perfect — but it's ours ❤️</div>
-
-<div class="count">
-<div>12 Nov 2026 💍</div>
-<div style="font-size:3rem" id="d">0</div>
-<div class="grid">
-<div class="box"><b id="h">0</b>H</div>
-<div class="box"><b id="m">0</b>M</div>
-<div class="box"><b id="s">0</b>S</div>
-<div class="box"><b id="th">0</b>TH</div>
-</div>
-</div>
+  <div class="photo-ring">
+    <img src="hero.jpg" alt="S & M" onerror="this.style.opacity='.3'">
+  </div>
+  <div class="hero-badge">Our Story ✦ Hamari Kahani</div>
+  <div class="hero-title">Sweet Mess</div>
+  <div class="hero-sub">Saleem ❤️ M — Forever</div>
+  <div class="hero-tag">"Because love is never perfect — but it's ours."<br><em>Laughs, fights, late-night talks & tiny forever moments</em></div>
+  <div class="cw">
+    <div class="cw-top"><div class="cw-label">S ❤️ M • 12 Nov 2026</div><div class="cw-live">● LIVE</div></div>
+    <div class="cw-days" id="D">--</div>
+    <div class="cw-dlbl">Days Until Our Nikah 💍</div>
+    <div class="cw-grid">
+      <div class="cw-box"><div class="cw-num" id="H">--</div><div class="cw-lbl">Hours</div></div>
+      <div class="cw-box"><div class="cw-num" id="M">--</div><div class="cw-lbl">Minutes</div></div>
+      <div class="cw-box"><div class="cw-num" id="S">--</div><div class="cw-lbl">Seconds</div></div>
+    </div>
+    <div class="cw-foot"><div class="cw-total" id="TH">Calculating…</div><div>S ❤️ M Forever 🌹</div></div>
+  </div>
+  <div class="scroll-hint">Scroll karo <span>↓</span></div>
 </section>
 
-<section class="sec" id="story">
-<h2 class="title">Hamari Kahani 🌙</h2>
-<div class="chat">
-<div class="me">Mera data kitabon mein nahi hai Madam 😂</div>
-<div class="she">Phir kahan milega?</div>
-<div class="me">Jahan abhi aapka dimag hai — WhatsApp ki screen par 😂</div>
-<div class="she">Nahi hai 🙄</div>
-<div class="me">Aankhein to hain… bus wahi milega 😏</div>
-<div class="she">Btate hi nahi mujhe kuch 🤦🏻‍♀️😂</div>
-<div class="she">Ek to k baad aap ache honge ya nahi… 🥺</div>
-<div class="me">Main tumhain chorne ke bajaye sudharunga ❤️</div>
+<div class="alt"><div class="sec" id="story">
+  <div class="badge">Chapter 01</div>
+  <div class="stitle">The First Hello 🌙</div>
+  <div class="div"></div>
+  <p class="sp">Sab kuch ek simple <strong>"Assalam o Alaikum"</strong> se shuru hua — raat ke 12:35 baje. Sirf teen minute baad Anarkali ne jawab diya, aur is kahani ka pehla page likha gaya.</p>
+  <div class="qb"><p>"Main kisi aur ko pasand nahi karta… jab se rishta tay hua hai, meri tawajju sirf is rishte ko samajhne, nibhanay aur izzat denay par hai." 💕</p></div>
+  <div class="cday">✦ Woh Funny Raat ✦</div>
+  <div class="bubs">
+    <div class="b1"><div class="bn">Nikamma</div>Mera data kitabon mein nahi hai Madam 😂</div>
+    <div class="b2"><div class="bn">Anarkali</div>Phir kahan milega?</div>
+    <div class="b1"><div class="bn">Nikamma</div>Jahan abhi aapka dimag hai — WhatsApp ki screen par 😂</div>
+    <div class="b2"><div class="bn">Anarkali</div>Nahi hai 🙄</div>
+    <div class="b1"><div class="bn">Nikamma</div>Aankhein to hain… bus wahi milega 😏</div>
+    <div class="b2"><div class="bn">Anarkali</div>Btate hi nahi mujhe kuch 🤦🏻‍♀️😂</div>
+  </div>
+  <div class="cday">✦ Dil Ki Baatein ✦</div>
+  <div class="bubs">
+    <div class="b2"><div class="bn">Anarkali</div>Ek to k baad aap ache honge ya nahi… Zindagi mushkil to nahi hojayegi… 🥺</div>
+    <div class="b1"><div class="bn">Nikamma</div>Main tumhain chorne ke bajaye sudharunga — wo bhi maze le le kar 😂</div>
+    <div class="b2"><div class="bn">Anarkali</div>🙂 Wese to mein achi hi hun</div>
+    <div class="b1"><div class="bn">Nikamma</div>Apni pareshani share karo, shadi ke baad main hoon na ❤️</div>
+    <div class="b2"><div class="bn">Anarkali</div>🥺 Ji InShaAllah</div>
+  </div>
+  <div class="mgrid">
+    <div class="mcard"><div class="ic">🌙</div><h3>12:35 AM</h3><p>Pehla salam — kahani ka aaghaaz</p></div>
+    <div class="mcard"><div class="ic">😂</div><h3>Nikamma Style</h3><p>"Main sab se bara Nikamma hoon"</p></div>
+    <div class="mcard"><div class="ic">🥺</div><h3>Dil Ka Dar</h3><p>"Aap baad mein bhi ache rahenge?"</p></div>
+    <div class="mcard"><div class="ic">💬</div><h3>Raat Ki Baatein</h3><p>3 baje tak — subah ki khabar nahi</p></div>
+  </div>
+</div></div>
+
+<div class="sec" id="ch2">
+  <div class="badge">Chapter 02</div>
+  <div class="stitle">Gumshuda Anarkali 🔍</div>
+  <div class="div"></div>
+  <div class="qb"><p>"Bas ab aap ki masrufiyat dekh kar dil karta hai akhbar mein ad do — <strong>'Gumshuda Anarkali ki talaash hai'</strong>" 😄</p></div>
+  <div class="cday">✦ Masti Bhari Baatein ✦</div>
+  <div class="bubs">
+    <div class="b2"><div class="bn">Anarkali</div>Aaj kal koi akhbar nahi parta, Instagram pe story daal dein 😂</div>
+    <div class="b1"><div class="bn">Nikamma</div>Main shareef bacha hoon, thora halka haath rakhega Mohtarma 🙏</div>
+    <div class="b2"><div class="bn">Anarkali</div>Don't worry 😌</div>
+    <div class="b1"><div class="bn">Nikamma</div>Konsa subject parhta hoon main?</div>
+    <div class="b2"><div class="bn">Anarkali</div>Shadi ka 😂</div>
+    <div class="b1"><div class="bn">Nikamma</div>😂 Bas ab nahi parhaon ga — jao idhar se!</div>
+    <div class="b2"><div class="bn">Anarkali</div>Soch lein — ja bhi sakti hoon 🙂</div>
+    <div class="b1"><div class="bn">Nikamma</div>Abhi tumhari choice hai — baad mein meri hogi 😏</div>
+    <div class="b2"><div class="bn">Anarkali</div>Mere bachhon ka dhyan? 😭</div>
+    <div class="b1"><div class="bn">Nikamma</div>Kaun rakhega? 😂</div>
+    <div class="b2"><div class="bn">Anarkali</div>Itni lambi soch li 😂😂</div>
+  </div>
+  <div class="cday">✦ Woh Dua Wala Moment ✦</div>
+  <div class="bubs">
+    <div class="b2"><div class="bn">Anarkali</div>Mein dua karungi hoorain hi na milein 🤭</div>
+    <div class="b1"><div class="bn">Nikamma</div>😂 Aur main kya karunga phir?</div>
+    <div class="b2"><div class="bn">Anarkali</div>Meri taraf dekhna 😌</div>
+    <div class="b1"><div class="bn">Nikamma</div>Deal ✅ — yahi to chahiye tha 😄</div>
+  </div>
+  <div class="mgrid">
+    <div class="mcard"><div class="ic">🌹</div><h3>Red Rose</h3><p>Anarkali ke favourite phool ✅</p></div>
+    <div class="mcard"><div class="ic">🍫</div><h3>KitKat</h3><p>Future gifts ke liye noted 😄</p></div>
+    <div class="mcard"><div class="ic">😂</div><h3>Wire Wali Baat</h3><p>"Zaban kaat dungi, wire rehne dungi"</p></div>
+    <div class="mcard"><div class="ic">🥺</div><h3>Jannat Wali Dua</h3><p>"Hoorain hi na milein" 🤭</p></div>
+  </div>
 </div>
 
-<center><button class="btn" onclick="openSecret()">Open Secret 💌</button></center>
-</section>
+<div class="alt"><div class="sec" id="gallery">
+  <div class="badge">Yaadein 📸</div>
+  <div class="stitle">Hamari Tasveeren</div>
+  <div class="div"></div>
+  <div class="car-wrap">
+    <button class="cbtn cprev" onclick="car(-1)">‹</button>
+    <div class="car-track" id="ct">
+      <div class="pol"><img src="hero.jpg" alt="S&M" onerror="this.style.background='#fce8ed'"><div class="pol-cap">S ❤️ M 🌹</div></div>
+      <div class="pol" style="transform:rotate(2deg)"><img src="memory2.jpg" alt="mem" onerror="this.src='hero.jpg'"><div class="pol-cap">Hamari Yaad 💕</div></div>
+      <div class="pol" style="transform:rotate(-2deg)"><img src="photo3.jpg" alt="p3" onerror="this.src='hero.jpg'"><div class="pol-cap">Sweet Mess 😊</div></div>
+      <div class="pol" style="transform:rotate(1.5deg)"><img src="photo4.jpg" alt="p4" onerror="this.src='hero.jpg'"><div class="pol-cap">Hamesha Saath 🌹</div></div>
+    </div>
+    <button class="cbtn cnext" onclick="car(1)">›</button>
+  </div>
+  <div class="cdots" id="cd"></div>
+  <p style="text-align:center;color:#aaa;font-size:.8rem;margin-top:14px;font-style:italic">"Har tasveer mein ek kahani chhipi hai 💕"</p>
+</div></div>
 
-<section class="sec" id="gallery">
-<h2 class="title">Memory Gallery 📸</h2>
-<div class="gallery">
-<img src="hero.jpg">
-<img src="memory2.jpg">
-<img src="photo3.jpg">
-<img src="photo4.jpg">
+<div class="drk" style="padding:65px 18px"><div style="max-width:780px;margin:0 auto;text-align:center">
+  <div class="badge lt">Aaj Ka Quote</div>
+  <div class="stitle lt">Roz Ek Nayi Feeling 💕</div>
+  <div class="div" style="margin:0 auto 22px"></div>
+   <div class="dqbox"><div class="dqtxt" id="dq">...</div><div class="dqby">— Sweet Mess Diary</div></div>
+  <div style="margin-top:40px">
+    <div class="badge lt" style="display:block;margin-bottom:14px">Hamara Safar 🌹</div>
+    <div class="mslist">
+      <div class="msitem"><span class="msic">✅</span><div class="msdot"></div><div class="msline"></div><span class="mslbl">Pehla Salam 🌙</span></div>
+      <div class="msitem"><span class="msic">✅</span><div class="msdot"></div><div class="msline"></div><span class="mslbl">Mangni 💍</span></div>
+      <div class="msitem"><span class="msic">✅</span><div class="msdot"></div><div class="msline"></div><span class="mslbl">Sweet Mess Book 📖</span></div>
+      <div class="msitem"><span class="msic">✅</span><div class="msdot"></div><div class="msline"></div><span class="mslbl">Yeh Website 💻</span></div>
+      <div class="msitem"><span class="msic">⏳</span><div class="msdot p"></div><div class="msline p"></div><span class="mslbl p">Nikah 💒 — 12 Nov 2026</span></div>
+      <div class="msitem"><span class="msic">🤍</span><div class="msdot p"></div><div class="msline p"></div><span class="mslbl p">Forever ∞</span></div>
+    </div>
+  </div>
+</div></div>
+
+<div class="ai-wrap" id="ai"><div class="ai-inner">
+  <div class="badge lt">AI se Dil Ki Baat</div>
+  <div class="stitle lt">Likho — Pao Ek Naya Ehsaas 🌹</div>
+  <div class="div" style="margin:0 auto 20px"></div>
+  <p style="color:#777;font-size:.87rem;margin-bottom:22px;font-style:italic">Kuch bhi likho — "I love you", "miss you", ya koi baat 💕</p>
+  <input class="ai-input" id="aiIn" type="text" placeholder="I Love You… ya kuch bhi likho 🌹" onkeydown="if(event.key==='Enter')aiGen()">
+  <button class="ai-btn" onclick="aiGen()">Generate 🌹</button>
+  <div class="ai-loading" id="aiLoad">Dil se likh raha hoon… 🌹</div>
+  <div class="ai-result" id="aiRes">
+    <div style="font-size:1.6rem;margin-bottom:10px">🌹</div>
+    <div class="ai-text" id="aiTxt"></div>
+    <div class="ai-sign">— Tumhara Nikamma ❤️</div>
+    <button class="ai-reload" onclick="aiGen()">🔄 Naya Generate Karo</button>
+  </div>
+</div></div>
+
+<div class="sec" id="letter" style="text-align:center">
+  <div class="badge">Sirf Tumhare Liye</div>
+  <div class="stitle">Ek Chhupa Hua Paigham 💌</div>
+  <div class="div" style="margin:0 auto 18px"></div>
+  <p class="sp" style="max-width:480px;margin:0 auto 22px;color:#999">Yeh khat sirf tumhare liye likha gaya hai… Open karo agar himmat ho 🌹</p>
+  <button class="lbtn" onclick="document.getElementById('pop').classList.add('on')">💌 Open Secret Letter</button>
 </div>
-</section>
 
-<section class="ai" id="ai">
-<h2 class="title" style="color:#fff">Dil Ki Baat ✨</h2>
-<input id="loveInput" placeholder="Kuch likho...">
-<br><button class="btn" onclick="askAI()">Ask</button>
-<div class="aiResult" id="aiResult"><span id="aiText"></span></div>
-</section>
-
-<div class="popup" id="popup">
-<div class="card">
-<h2 style="color:#c8536a;margin-bottom:10px">Sirf Tumhare Liye ❤️</h2>
-<p style="line-height:1.9">
-Tum meri zindagi ka wo sukoon ho jo har dua ke baad milta hai.<br><br>
-Agar kabhi main chup rahun, samajh lena mohabbat kam nahi hui — bas lafz kam par gaye.<br><br>
-12 Nov 2026 ka intezar sirf ek date nahi... meri poori zindagi ka naya safar hai.
-</p>
-<br><button class="btn" onclick="closeSecret()">Close</button>
-</div>
+<div class="popup" id="pop">
+  <div class="popbox">
+    <button class="pclose" onclick="document.getElementById('pop').classList.remove('on')">✕</button>
+    <div class="ptitle">Meri Anarkali ke liye… 💌</div>
+    <div class="pbody">
+      Tum mili thi ek "Assalam o Alaikum" se,<br>aur ab tum meri saansein ho.<br><br>
+      Hum perfect nahi hain — kabhi tum naraz, kabhi main chup,<br>
+      kabhi "I hate you" mein chhupa ek gehra "I love you".<br><br>
+      Wire kaatne wali bhi ho, "Nikamma" bhi kehti ho,<br>
+      lekin tum hi mere liye sabse pyaari Sweet Mess ho. 🫶<br><br>
+      12 November 2026 ka intezaar hai —<br>
+      jab is kahani ka sabse khoobsurat chapter shuru hoga. InShaAllah ❤️
+    </div>
+    <div class="psign">— Tumhara Nikamma 🌹</div>
+  </div>
 </div>
 
-<footer>Made with ❤️ by Saleem — Sweet Mess Forever</footer>
+<div class="fcount" id="nikah">
+  <div class="badge lt" style="display:block;text-align:center">Ab Bas Intezaar Hai</div>
+  <div class="fc-title">12 November 2026 💍</div>
+  <div class="fc-grid">
+    <div class="fc-box"><div class="fc-num" id="D2">--</div><div class="fc-lbl">Days</div></div>
+    <div class="fc-box"><div class="fc-num" id="H2">--</div><div class="fc-lbl">Hours</div></div>
+    <div class="fc-box"><div class="fc-num" id="M2">--</div><div class="fc-lbl">Mins</div></div>
+    <div class="fc-box"><div class="fc-num" id="S2">--</div><div class="fc-lbl">Secs</div></div>
+  </div>
+</div>
+
+<footer>Made with <span>❤️</span> for the sweetest mess ever — <span>S & M Forever 🌹</span><br><br>
+<span style="font-family:'Dancing Script',cursive;font-size:1rem;color:#444">"Do pagal… ek mohabbat… aur hazaron sweet disasters!"</span></footer>
 
 <script>
-for(let i=0;i<20;i++){
-let p=document.createElement('div');
-p.className='petal';
-p.innerHTML='🌸';
-p.style.left=Math.random()*100+'vw';
-p.style.top='-30px';
-p.style.fontSize=(14+Math.random()*14)+'px';
-p.style.animationDuration=(6+Math.random()*6)+'s';
-document.body.appendChild(p);
-}
+// PETALS
+['🌹','💕','✨','🌺','💫'].forEach(e=>{for(let i=0;i<4;i++){const p=document.createElement('div');p.className='petal';p.textContent=e;p.style.cssText=`left:${Math.random()*100}vw;font-size:${.7+Math.random()*.6}rem;animation-duration:${10+Math.random()*12}s;animation-delay:${Math.random()*15}s`;document.body.appendChild(p);}});
 
-function updateCountdown(){
-const target=new Date("2026-11-12T00:00:00+05:00").getTime();
-const now=new Date().getTime();
-const diff=target-now;
-if(diff<0)return;
-document.getElementById('d').innerText=Math.floor(diff/(1000*60*60*24));
-document.getElementById('h').innerText=Math.floor((diff/(1000*60*60))%24);
-document.getElementById('m').innerText=Math.floor((diff/(1000*60))%60);
-document.getElementById('s').innerText=Math.floor((diff/1000)%60);
-document.getElementById('th').innerText=Math.floor(diff/(1000*60*60));
-}
-setInterval(updateCountdown,1000); updateCountdown();
-
-function openSecret(){document.getElementById('popup').classList.add('on')}
-function closeSecret(){document.getElementById('popup').classList.remove('on')}
-
-const replies=[
-"Tum meri dua ka sabse pyara jawab ho ❤️",
-"Tumhari yaad har baat mein aa jati hai 🌙",
-"Tum meri aadat ban chuki ho 💕",
-"12 Nov ka intezar meri zindagi ka safar hai 💍",
-"Allah ne tumhein meri qismat likha ✨"
-];
-function askAI(){
-document.getElementById('aiResult').style.display='block';
-document.getElementById('aiText').innerText=replies[Math.floor(Math.random()*replies.length)];
-}
-
-document.querySelectorAll('img').forEach(img=>{
-img.onerror=function(){ if(this.src.indexOf('hero.jpg')===-1) this.src='hero.jpg'; }
+// COUNTDOWN — runs after page fully loads
+window.addEventListener('load', function(){
+  function tick(){
+    const target = new Date('2026-11-12T00:00:00+05:00').getTime();
+    const diff = target - Date.now();
+    if(diff <= 0){
+      ['D','H','M','S','D2','H2','M2','S2'].forEach(id=>{
+        const e=document.getElementById(id); if(e) e.textContent='0';
+      });
+      const th=document.getElementById('TH');
+      if(th) th.textContent='Nikah Ho Gaya! 🎉';
+      return;
+    }
+    const d=Math.floor(diff/86400000);
+    const h=Math.floor((diff%86400000)/3600000);
+    const m=Math.floor((diff%3600000)/60000);
+    const s=Math.floor((diff%60000)/1000);
+    const th=Math.floor(diff/3600000);
+    const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+    set('D',d); set('H',h); set('M',m); set('S',s);
+    set('D2',d); set('H2',h); set('M2',m); set('S2',s);
+    set('TH', th.toLocaleString()+' Total Hours Left');
+  }
+  tick();
+  setInterval(tick, 1000);
 });
-</script>
 
+// CAROUSEL — fixed with proper width calculation
+const ct = document.getElementById('ct');
+const pols = ct ? [...ct.querySelectorAll('.pol')] : [];
+const cdEl = document.getElementById('cd');
+let ci = 0;
+
+window.addEventListener('load', function(){
+  if(pols.length && cdEl){
+    pols.forEach((_,i)=>{
+      const d=document.createElement('div');
+      d.className='cdot'+(i===0?' on':'');
+      d.onclick=()=>goTo(i);
+      cdEl.appendChild(d);
+    });
+  }
+});
+
+function goTo(i){
+  ci = Math.max(0, Math.min(i, pols.length-1));
+  // Get actual rendered width
+  const rect = pols[0] ? pols[0].getBoundingClientRect() : {width:200};
+  const gap = 20;
+  const w = rect.width + gap;
+  ct.style.transform = `translateX(-${ci * w}px)`;
+  document.querySelectorAll('.cdot').forEach((d,j)=>d.classList.toggle('on', j===ci));
+}
+function car(dir){ goTo(ci+dir); }
+
+// DAILY QUOTE
+const quotes=["Tang karna bhi pyaar tha, chup rehna bhi jazba tha.","Har 'I hate you' mein chhupa tha ek gehra 'I love you'.","Rishta perfect nahi tha, par asli tha. ❤️","Baad mein jane hi nahi dunga — Nikamma 😏","Mohabbat ek 'Sweet Mess' thi — aur hum uske sabse khubsurat saboot.","Subah ek nayi baat, raat ek nayi feeling. 💕","Red rose jaise ho tum — khoobsurat bhi, kanton ke bawajood pyaari bhi. 🌹","Shadi ka subject sabse zyada interest wala nikla. 😂","InShaAllah sab theek hoga — ye do lafz kaafi hain. 🤍","Gumshuda Anarkali ki talaash mein — bechain Nikamma. 😄"];
+document.getElementById('dq').textContent=quotes[new Date().getDate()%quotes.length];
+
+// AI GENERATOR — fallback paragraphs (API key needed for live AI)
+const fallback=["Tum Anarkali ho — meri Sweet Mess, meri duaon ka jawab. Jab se pehli baar 'Assalam o Alaikum' likha tha, dil ne tay kar liya tha ke yeh rishta poori shiddat se nibhana hai. Tum naraz hoti ho to main chup ho jata hoon — isliye ke tumhari narazgi bhi mujhe zyada pyaar karwati hai. 🌹","Anarkali, tum woh insaan ho jis ne sikhaya ke mohabbat sirf lafzon mein nahi hoti. Teri ek 'Ji InShaAllah' ne dil mein ghar kar liya — aur main chahta hoon ke yeh ghar hamesha abaad rahe. 💕","Yaar, tum wire kaatne ki baat karti ho, mujhe 'Nikamma' kehti ho — lekin sach yeh hai ke tum hi meri sabse badi taqat ho. Tumhara chehra yaad aata hai aur sab theek ho jata hai. 🌹","Red rose jaise ho tum — khoobsurat, khushboodar, aur thodi si kanton wali bhi 😄 — lekin yahi to tumhari khasiyat hai jo mujhe pyaari hai. 🌹","Anarkali, jab tumne kaha 'hoorain hi na milein' — tab pata chala ke tum sirf meri mangetar nahi, meri best friend bhi ho. Yeh mohabbat hamesha zinda rahe. InShaAllah. 🫶","12 November 2026 — yeh sirf ek date nahi, yeh woh din hai jab meri sabse pyaari Sweet Mess hamesha ke liye meri ho jayegi. InShaAllah. ❤️","Tum ne ek baar kaha tha 'adjust karlugi' — lekin main chahta hoon ke tum khud raho, bilkul waise jaise ho. Tumhari hasi, tumhara nakhra, tumhari 'Mein achi hi hun' — yeh sab mujhe zindagi se zyada pyaara hai. 🥺","Duniya mein hazaron log perfect hone ka dawa karte hain — lekin tumne kaha 'love is never perfect but it is ours'. Aur yahi baat mujhe tumse aur zyada mohabbat karwati hai. 💫"];
+let lastAI = -1;
+function aiGen(){
+  const inp = document.getElementById('aiIn').value.trim();
+  if(!inp){
+    document.getElementById('aiIn').style.borderColor='var(--rose)';
+    document.getElementById('aiIn').placeholder='Pehle kuch likho... 🌹';
+    return;
+  }
+  document.getElementById('aiRes').style.display='none';
+  document.getElementById('aiLoad').style.display='block';
+  // Show after small delay for effect
+  setTimeout(function(){
+    let i;
+    do{ i=Math.floor(Math.random()*fallback.length); } while(i===lastAI && fallback.length>1);
+    lastAI=i;
+    document.getElementById('aiTxt').textContent = fallback[i];
+    document.getElementById('aiLoad').style.display='none';
+    document.getElementById('aiRes').style.display='block';
+  }, 1200);
+}
+
+// POPUP
+document.getElementById('pop').addEventListener('click',function(e){if(e.target===this)this.classList.remove('on');});
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.1});
+document.querySelectorAll('.mcard,.b1,.b2,.qb,.msitem,.pol').forEach(el=>{el.style.cssText+='opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease';obs.observe(el);});
+</script>
 </body>
 </html>
