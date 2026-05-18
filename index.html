@@ -467,7 +467,7 @@ footer span{color:var(--rose)}
 
   <div class="diary-content" id="diaryContent">
     <div style="text-align:center;margin-bottom:20px">
-      <span style="font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--rose)">Welcome Anarkali! 🌹</span>
+    <span id="diaryWelcome" style="font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--rose)">Welcome Anarakli! 🌹</span>
     </div>
     <textarea class="diary-write" id="diaryWrite" placeholder="Aaj kya feel hua? Likho… 💕"></textarea>
     <button class="diary-btn" onclick="saveDiaryEntry()">💾 Save Entry</button>
@@ -691,22 +691,28 @@ function showResult(){
 
 function restartQuiz(){qIdx=0;score=0;loadQ();}
 loadQ();
-const DIARY_PASS = 'SM2026';
+const USERS = {
+  'SM2026': '🌹 Saleem',
+  'AN2026': '💕 Anarkali'
+};
+let currentUser = '';
 const BIN_ID = '6a0b277e6877513b27910528';
 const API_KEY = '$2a$10$UXap3OPmD9K.1ZClVl4GMuf3dFt75vwDvmEGwWNF.RBIaPhFw7cZa';
 
+
 function unlockDiary(){
   const pass = document.getElementById('diaryPass').value;
-  if(pass === DIARY_PASS){
+  if(USERS[pass]){
+    currentUser = USERS[pass];
     document.getElementById('diaryLock').style.display = 'none';
     document.getElementById('diaryContent').style.display = 'block';
+    document.getElementById('diaryWelcome').textContent = 'Welcome ' + currentUser + '!';
     loadDiaryEntries();
   } else {
     document.getElementById('diaryError').style.display = 'block';
     setTimeout(()=>document.getElementById('diaryError').style.display='none', 2000);
   }
 }
-
 async function saveDiaryEntry(){
   const text = document.getElementById('diaryWrite').value.trim();
   if(!text) return;
@@ -722,10 +728,10 @@ async function saveDiaryEntry(){
 
   entries.unshift({
     text,
+    user: currentUser,
     date: new Date().toLocaleDateString('en-PK',{day:'numeric',month:'long',year:'numeric'}),
     timestamp: Date.now()
   });
-
   await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
     method: 'PUT',
     headers: {
@@ -752,7 +758,7 @@ async function loadDiaryEntries(){
 
   el.innerHTML = entries.length ? entries.map(e => `
     <div class="diary-entry">
-      <h4>🌹 Dear Diary…</h4>
+      <h4>${e.user || '🌹 Dear Diary…'}</h4>
       <p>${e.text}</p>
       <small>${e.date}</small>
     </div>`).join('') 
