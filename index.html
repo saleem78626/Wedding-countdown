@@ -130,6 +130,16 @@ footer span{color:var(--rose)}
 .music-box p{color:#aaa;font-size:.88rem;margin-bottom:22px;line-height:1.8}
 .music-enter-btn{padding:14px 28px;border:none;border-radius:30px;background:linear-gradient(135deg,#c8536a,#7a2136);color:#fff;font-family:'Dancing Script',cursive;font-size:1.2rem;cursor:pointer;width:100%}
 .music-float{position:fixed;bottom:22px;right:22px;z-index:200;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#c8536a,#7a2136);border:none;color:#fff;font-size:1.3rem;cursor:pointer;display:none;align-items:center;justify-content:center}
+/* LOADING SCREEN */
+.loader{position:fixed;inset:0;background:#1e0d12;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:opacity 1s ease}
+.loader.hide{opacity:0;pointer-events:none}
+.loader-rose{font-size:4rem;animation:roseAnim 1.5s ease infinite}
+@keyframes roseAnim{0%,100%{transform:scale(1) rotate(-10deg)}50%{transform:scale(1.2) rotate(10deg)}}
+.loader-title{font-family:'Dancing Script',cursive;font-size:2.8rem;color:#f2c4ce;margin:15px 0 8px}
+.loader-sub{font-family:'Playfair Display',serif;font-style:italic;color:#c8536a;font-size:1rem}
+.loader-bar{width:200px;height:3px;background:rgba(255,255,255,.1);border-radius:3px;margin-top:25px;overflow:hidden}
+.loader-fill{height:100%;width:0%;background:linear-gradient(90deg,#c8536a,#f2c4ce);border-radius:3px;animation:fillBar 2.5s ease forwards}
+@keyframes fillBar{to{width:100%}}
 </style>
 </head>
 <body>
@@ -139,6 +149,13 @@ footer span{color:var(--rose)}
 <img src="hero.jpg" class="float-pic" style="width:100px;height:100px;left:46%;animation-duration:25s;animation-delay:10s">
 <img src="memory2.jpg" class="float-pic" style="width:60px;height:60px;left:20%;animation-duration:19s;animation-delay:14s">
 
+ <!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <div class="loader-rose">🌹</div>
+  <div class="loader-title">Sweet Mess</div>
+  <div class="loader-sub">Saleem ❤️ M — Forever</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
   <div class="music-popup" id="musicPopup">
   <div class="music-box">
     <div style="font-size:3rem;margin-bottom:12px">🌹</div>
@@ -467,7 +484,16 @@ function toggleMusic(){
   const btn=document.getElementById('musicBtn');
   if(musicPlaying){a.pause();musicPlaying=false;btn.textContent='🎵';}
   else{a.play();musicPlaying=true;btn.textContent='🔊';}
-                          }
+    }
+  // LOADING SCREEN
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    document.getElementById('loader').classList.add('hide');
+    setTimeout(function(){
+      document.getElementById('loader').style.display='none';
+    }, 1000);
+  }, 2800);
+});
 </script>
 </body>
 </html>
