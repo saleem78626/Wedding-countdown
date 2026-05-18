@@ -1,124 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Mess 💫 — S & M Forever</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#c8536a;--deep:#7a2136;--cream:#fff8f8;--dark:#1e0d12}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:var(--cream);overflow-x:hidden;color:#3d1f28}
+nav{position:fixed;top:0;width:100%;background:#1e0d12ee;display:flex;justify-content:center;gap:10px;padding:10px;z-index:100}
+nav a{color:#fff;text-decoration:none;font-size:.75rem}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:90px 20px;background:radial-gradient(circle,#fde8ef,#fff)}
+.photo{width:170px;height:170px;border-radius:50%;object-fit:cover;border:4px solid var(--rose);box-shadow:0 0 30px rgba(200,83,106,.25)}
+h1{font-family:'Dancing Script';font-size:4rem;color:var(--deep);margin:15px 0}
+.sub{font-family:'Playfair Display';font-style:italic;color:#777;max-width:500px}
+.count{margin-top:25px;background:#1e0d12;color:#fff;padding:20px;border-radius:20px;width:320px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}
+.box{background:#ffffff10;padding:12px;border-radius:14px}
+.box b{display:block;font-size:1.4rem}
+.sec{max-width:900px;margin:auto;padding:70px 18px}
+.title{font-family:'Playfair Display';font-size:2rem;color:var(--deep);margin-bottom:20px;text-align:center}
+.chat{display:flex;flex-direction:column;gap:10px;margin:25px 0}
+.me,.she{max-width:75%;padding:12px 16px;border-radius:18px;line-height:1.7}
+.me{align-self:left;background:#1e0d12;color:#fff;border-bottom-left-radius:5px}
+.she{align-self:flex-end;background:linear-gradient(135deg,#c8536a,#7a2136);color:#fff;border-bottom-right-radius:5px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.1)}
+.btn{background:linear-gradient(135deg,#c8536a,#7a2136);color:#fff;border:none;padding:12px 22px;border-radius:30px;cursor:pointer}
+.popup{display:none;position:fixed;inset:0;background:#0009;justify-content:center;align-items:center;padding:20px;z-index:999}
+.popup.on{display:flex}
+.card{background:#fff;padding:28px;border-radius:20px;max-width:460px}
+.ai{background:#1e0d12;padding:60px 20px;text-align:center;color:#fff}
+.ai input{width:100%;max-width:420px;padding:12px 18px;border-radius:25px;border:none;margin-bottom:12px}
+.aiResult{display:none;margin-top:20px;background:#ffffff10;padding:20px;border-radius:18px;max-width:500px;margin-inline:auto}
+.float{position:fixed;border-radius:50%;opacity:.13;animation:up 20s linear infinite;pointer-events:none}
+@keyframes up{from{transform:translateY(110vh)}to{transform:translateY(-120px)}}
+.petal{position:fixed;animation:fall 8s linear infinite;opacity:.7;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+footer{padding:25px;text-align:center;background:#120609;color:#777}
+</style>
+</head>
+<body>
+
+<img src="hero.jpg" class="float" style="width:80px;height:80px;left:5%">
+<img src="memory2.jpg" class="float" style="width:70px;height:70px;left:80%;animation-duration:25s">
+<img src="photo3.jpg" class="float" style="width:90px;height:90px;left:45%;animation-duration:22s">
+<img src="photo4.jpg" class="float" style="width:65px;height:65px;left:20%;animation-duration:18s">
+
+<nav>
+<a href="#home">Home</a>
+<a href="#story">Story</a>
+<a href="#gallery">Gallery</a>
+<a href="#ai">Dil Ki Baat</a>
+</nav>
+
+<section class="hero" id="home">
+<img src="hero.jpg" class="photo">
+<h1>Sweet Mess</h1>
+<div class="sub">Because love is never perfect — but it's ours ❤️</div>
+
+<div class="count">
+<div>12 Nov 2026 💍</div>
+<div style="font-size:3rem" id="d">0</div>
+<div class="grid">
+<div class="box"><b id="h">0</b>H</div>
+<div class="box"><b id="m">0</b>M</div>
+<div class="box"><b id="s">0</b>S</div>
+<div class="box"><b id="th">0</b>TH</div>
+</div>
+</div>
+</section>
+
+<section class="sec" id="story">
+<h2 class="title">Hamari Kahani 🌙</h2>
+<div class="chat">
+<div class="me">Mera data kitabon mein nahi hai Madam 😂</div>
+<div class="she">Phir kahan milega?</div>
+<div class="me">Jahan abhi aapka dimag hai — WhatsApp ki screen par 😂</div>
+<div class="she">Nahi hai 🙄</div>
+<div class="me">Aankhein to hain… bus wahi milega 😏</div>
+<div class="she">Btate hi nahi mujhe kuch 🤦🏻‍♀️😂</div>
+<div class="she">Ek to k baad aap ache honge ya nahi… 🥺</div>
+<div class="me">Main tumhain chorne ke bajaye sudharunga ❤️</div>
+</div>
+
+<center><button class="btn" onclick="openSecret()">Open Secret 💌</button></center>
+</section>
+
+<section class="sec" id="gallery">
+<h2 class="title">Memory Gallery 📸</h2>
+<div class="gallery">
+<img src="hero.jpg">
+<img src="memory2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+</div>
+</section>
+
+<section class="ai" id="ai">
+<h2 class="title" style="color:#fff">Dil Ki Baat ✨</h2>
+<input id="loveInput" placeholder="Kuch likho...">
+<br><button class="btn" onclick="askAI()">Ask</button>
+<div class="aiResult" id="aiResult"><span id="aiText"></span></div>
+</section>
+
+<div class="popup" id="popup">
+<div class="card">
+<h2 style="color:#c8536a;margin-bottom:10px">Sirf Tumhare Liye ❤️</h2>
+<p style="line-height:1.9">
+Tum meri zindagi ka wo sukoon ho jo har dua ke baad milta hai.<br><br>
+Agar kabhi main chup rahun, samajh lena mohabbat kam nahi hui — bas lafz kam par gaye.<br><br>
+12 Nov 2026 ka intezar sirf ek date nahi... meri poori zindagi ka naya safar hai.
+</p>
+<br><button class="btn" onclick="closeSecret()">Close</button>
+</div>
+</div>
+
+<footer>Made with ❤️ by Saleem — Sweet Mess Forever</footer>
+
 <script>
-/* petals */
-for(let i=0;i<24;i++){
- let p=document.createElement('div');
- p.className='petal';
- p.innerHTML=Math.random()>.5?'🌸':'💮';
- p.style.left=Math.random()*100+'vw';
- p.style.top='-50px';
- p.style.fontSize=(14+Math.random()*14)+'px';
- p.style.animationDuration=(7+Math.random()*9)+'s';
- p.style.animationDelay=(Math.random()*5)+'s';
- document.body.appendChild(p);
+for(let i=0;i<20;i++){
+let p=document.createElement('div');
+p.className='petal';
+p.innerHTML='🌸';
+p.style.left=Math.random()*100+'vw';
+p.style.top='-30px';
+p.style.fontSize=(14+Math.random()*14)+'px';
+p.style.animationDuration=(6+Math.random()*6)+'s';
+document.body.appendChild(p);
 }
 
-/* countdown */
 function updateCountdown(){
-  const target = new Date("2026-11-12T00:00:00+05:00").getTime();
-  const now = new Date().getTime();
-  const diff = target - now;
-
-  if(diff <= 0){
-    document.getElementById('D').innerText = "0";
-    document.getElementById('H').innerText = "0";
-    document.getElementById('M').innerText = "0";
-    document.getElementById('S').innerText = "0";
-    document.getElementById('TH').innerText = "Nikah Mubarak ❤️";
-    return;
-  }
-
-  const d = Math.floor(diff/(1000*60*60*24));
-  const h = Math.floor((diff/(1000*60*60))%24);
-  const m = Math.floor((diff/(1000*60))%60);
-  const s = Math.floor((diff/1000)%60);
-
-  document.getElementById('D').innerText = d;
-  document.getElementById('H').innerText = h;
-  document.getElementById('M').innerText = m;
-  document.getElementById('S').innerText = s;
-  document.getElementById('TH').innerText = Math.floor(diff/(1000*60*60)) + " Total Hours Left";
+const target=new Date("2026-11-12T00:00:00+05:00").getTime();
+const now=new Date().getTime();
+const diff=target-now;
+if(diff<0)return;
+document.getElementById('d').innerText=Math.floor(diff/(1000*60*60*24));
+document.getElementById('h').innerText=Math.floor((diff/(1000*60*60))%24);
+document.getElementById('m').innerText=Math.floor((diff/(1000*60))%60);
+document.getElementById('s').innerText=Math.floor((diff/1000)%60);
+document.getElementById('th').innerText=Math.floor(diff/(1000*60*60));
 }
-setInterval(updateCountdown,1000);
-updateCountdown();
+setInterval(updateCountdown,1000); updateCountdown();
 
-/* gallery slider */
-let current=0;
-const track=document.getElementById('ct');
-const cards=document.querySelectorAll('.pol');
-const dotsWrap=document.getElementById('cd');
-const max=cards.length;
+function openSecret(){document.getElementById('popup').classList.add('on')}
+function closeSecret(){document.getElementById('popup').classList.remove('on')}
 
-for(let i=0;i<max;i++){
- let dot=document.createElement('div');
- dot.className='cdot'+(i==0?' on':'');
- dot.onclick=()=>go(i);
- dotsWrap.appendChild(dot);
-}
-
-function updateDots(){
- document.querySelectorAll('.cdot').forEach((d,i)=>{
-   d.classList.toggle('on',i===current);
- });
-}
-
-function go(i){
- current=i;
- track.style.transform='translateX(-'+(current*220)+'px)';
- updateDots();
-}
-
-function car(dir){
- current+=dir;
- if(current<0) current=max-1;
- if(current>=max) current=0;
- go(current);
-}
-
-/* photo fallback */
-document.querySelectorAll('img').forEach(img=>{
- img.onerror=function(){
-   if(this.src.indexOf('hero.jpg')===-1){
-     this.src='hero.jpg';
-   }
- }
-});
-
-/* secret popup */
-function openSecret(){
- document.getElementById('popup').classList.add('on');
-}
-function closeSecret(){
- document.getElementById('popup').classList.remove('on');
-}
-window.openSecret=openSecret;
-window.closeSecret=closeSecret;
-
-/* AI section */
-const aiReplies = [
-"Har baat mein tumhari yaad aa hi jaati hai. Shayad isi ko mohabbat kehte hain. ❤️",
-"Tum sirf meri kahani nahi — meri aadat ban chuki ho. 🌙",
-"Jab tum chup hoti ho tab bhi tumhari baatein sunai deti hain. 💕",
-"12 Nov sirf date nahi... meri zindagi ka naya janam hai. 💍",
-"Har dafa sochta hoon — Allah ne tumhein meri dua ka jawab bana diya. ✨"
+const replies=[
+"Tum meri dua ka sabse pyara jawab ho ❤️",
+"Tumhari yaad har baat mein aa jati hai 🌙",
+"Tum meri aadat ban chuki ho 💕",
+"12 Nov ka intezar meri zindagi ka safar hai 💍",
+"Allah ne tumhein meri qismat likha ✨"
 ];
-
 function askAI(){
- const input=document.getElementById('loveInput');
- const result=document.getElementById('aiResult');
- const text=document.getElementById('aiText');
- const loading=document.getElementById('aiLoading');
-
- loading.style.display='block';
- result.style.display='none';
-
- setTimeout(()=>{
-   loading.style.display='none';
-   result.style.display='block';
-   text.innerText = aiReplies[Math.floor(Math.random()*aiReplies.length)];
- },1500);
+document.getElementById('aiResult').style.display='block';
+document.getElementById('aiText').innerText=replies[Math.floor(Math.random()*replies.length)];
 }
-window.askAI=askAI;
 
-/* auto slide */
-setInterval(()=>car(1),5000);
+document.querySelectorAll('img').forEach(img=>{
+img.onerror=function(){ if(this.src.indexOf('hero.jpg')===-1) this.src='hero.jpg'; }
+});
 </script>
+
+</body>
+</html>
