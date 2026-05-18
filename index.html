@@ -691,38 +691,73 @@ function showResult(){
 
 function restartQuiz(){qIdx=0;score=0;loadQ();}
 loadQ();
-// SECRET DIARY
 const DIARY_PASS = 'SM2026';
+const BIN_ID = '6a0b277e6877513b27910528';
+const API_KEY = '$2a$10$Cc3WYTCzj2ZEevpN4KEp6uhgXAPAaMNr2RKZm/QgHutKj4VQ0sAHe';
+
 function unlockDiary(){
-  const pass=document.getElementById('diaryPass').value;
-  if(pass===DIARY_PASS){
-    document.getElementById('diaryLock').style.display='none';
-    document.getElementById('diaryContent').style.display='block';
+  const pass = document.getElementById('diaryPass').value;
+  if(pass === DIARY_PASS){
+    document.getElementById('diaryLock').style.display = 'none';
+    document.getElementById('diaryContent').style.display = 'block';
     loadDiaryEntries();
   } else {
-    document.getElementById('diaryError').style.display='block';
-    setTimeout(()=>document.getElementById('diaryError').style.display='none',2000);
+    document.getElementById('diaryError').style.display = 'block';
+    setTimeout(()=>document.getElementById('diaryError').style.display='none', 2000);
   }
 }
-function saveDiaryEntry(){
-  const text=document.getElementById('diaryWrite').value.trim();
+
+async function saveDiaryEntry(){
+  const text = document.getElementById('diaryWrite').value.trim();
   if(!text) return;
-  const entries=JSON.parse(localStorage.getItem('sweetDiary')||'[]');
-  entries.unshift({text,date:new Date().toLocaleDateString('en-PK',{day:'numeric',month:'long',year:'numeric'})});
-  localStorage.setItem('sweetDiary',JSON.stringify(entries));
-  document.getElementById('diaryWrite').value='';
+
+  const btn = document.querySelector('.diary-btn');
+  btn.textContent = '⏳ Saving...';
+
+  const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+    headers: { 'X-Master-Key': API_KEY }
+  });
+  const data = await res.json();
+  const entries = data.record.entries || [];
+
+  entries.unshift({
+    text,
+    date: new Date().toLocaleDateString('en-PK',{day:'numeric',month:'long',year:'numeric'}),
+    timestamp: Date.now()
+  });
+
+  await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-Key': API_KEY
+    },
+    body: JSON.stringify({ entries })
+  });
+
+  document.getElementById('diaryWrite').value = '';
+  btn.textContent = '💾 Save Entry';
   loadDiaryEntries();
 }
-function loadDiaryEntries(){
-  const entries=JSON.parse(localStorage.getItem('sweetDiary')||'[]');
-  const el=document.getElementById('diaryEntries');
-  el.innerHTML=entries.length?entries.map(e=>`
+
+async function loadDiaryEntries(){
+  const el = document.getElementById('diaryEntries');
+  el.innerHTML = '<p style="color:#bbb;text-align:center">⏳ Loading...</p>';
+
+  const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+    headers: { 'X-Master-Key': API_KEY }
+  });
+  const data = await res.json();
+  const entries = data.record.entries || [];
+
+  el.innerHTML = entries.length ? entries.map(e => `
     <div class="diary-entry">
       <h4>🌹 Dear Diary…</h4>
       <p>${e.text}</p>
       <small>${e.date}</small>
-    </div>`).join(''):'<p style="color:#bbb;text-align:center;font-style:italic">Abhi koi entry nahi 💕</p>';
-                            }
+    </div>`).join('') 
+  : '<p style="color:#bbb;text-align:center;font-style:italic">Abhi koi entry nahi 💕</p>';
+}
 </script>
 <!-- LOVE TICKER -->
 <div class="ticker-wrap">
