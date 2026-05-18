@@ -147,6 +147,16 @@ footer span{color:var(--rose)}
 .ticker-item{font-family:'Playfair Display',serif;font-style:italic;color:#f2c4ce;font-size:.88rem}
 .ticker-item span{color:#c8536a;margin:0 8px}
 @keyframes tickerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* DIN COUNTER */
+.din-wrap{background:linear-gradient(135deg,#1e0d12,#3a1020);padding:50px 18px;text-align:center}
+.din-box{display:inline-flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(200,83,106,.25);border-radius:24px;padding:30px 40px;margin-top:20px}
+.din-num{font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;color:#fff;line-height:1}
+.din-label{font-family:'Dancing Script',cursive;font-size:1.3rem;color:#f2c4ce;margin-top:8px}
+.din-sub{color:#777;font-size:.82rem;margin-top:6px;font-style:italic}
+.din-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;max-width:340px}
+.din-stat{background:rgba(255,255,255,.05);border-radius:16px;padding:14px 10px;border:1px solid rgba(200,83,106,.15)}
+.din-stat b{display:block;font-family:'Playfair Display',serif;font-size:1.4rem;color:#fff}
+.din-stat span{font-size:.7rem;color:#777;letter-spacing:1px;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -369,7 +379,22 @@ footer span{color:var(--rose)}
   </div>
 </div>
 
-<footer>Made with <span>❤️</span> for the sweetest mess ever — <span>S & M Forever 🌹</span><br><br>
+<!-- DIN COUNTER -->
+<div class="din-wrap">
+  <div class="badge lt" style="display:block;text-align:center">Saath Hain Tab Se</div>
+  <div class="stitle lt" style="text-align:center">Hamari Mangni Se Aaj Tak 💍</div>
+  <div class="din-box">
+    <div class="din-num" id="dinNum">0</div>
+    <div class="din-label">Din Saath Hain 🌹</div>
+    <div class="din-sub">Mangni: 2024 se — Nikah: 12 Nov 2026 tak</div>
+  </div>
+  <div class="din-stats" style="margin:20px auto 0">
+    <div class="din-stat"><b id="dinHours">0</b><span>Hours</span></div>
+    <div class="din-stat"><b id="dinWeeks">0</b><span>Weeks</span></div>
+    <div class="din-stat"><b id="dinMonths">0</b><span>Months</span></div>
+  </div>
+</div>
+ <footer>Made with <span>❤️</span> for the sweetest mess ever — <span>S & M Forever 🌹</span><br><br>
 <span style="font-family:'Dancing Script',cursive;font-size:1rem;color:#444">"Do pagal… ek mohabbat… aur hazaron sweet disasters!"</span></footer>
 
 <script>
@@ -501,6 +526,18 @@ window.addEventListener('load', function(){
     }, 1000);
   }, 2800);
 });
+ // DIN COUNTER
+function dinCount(){
+  const mangni = new Date('2025-04-19T00:00:00+05:00').getTime();
+  const diff = Date.now() - mangni;
+  if(diff < 0) return;
+  document.getElementById('dinNum').textContent = Math.floor(diff/86400000);
+  document.getElementById('dinHours').textContent = Math.floor(diff/3600000);
+  document.getElementById('dinWeeks').textContent = Math.floor(diff/604800000);
+  document.getElementById('dinMonths').textContent = Math.floor(diff/2592000000);
+}
+dinCount();
+setInterval(dinCount, 60000);
 </script>
 <!-- LOVE TICKER -->
 <div class="ticker-wrap">
