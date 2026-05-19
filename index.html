@@ -190,6 +190,17 @@ footer span{color:var(--rose)}
 .diary-entry small{font-size:.72rem;color:#bbb}
 .diary-write{width:100%;padding:13px 18px;border-radius:16px;border:1px solid rgba(200,83,106,.2);font-family:'Poppins',sans-serif;font-size:.9rem;outline:none;resize:none;margin-bottom:10px;min-height:100px}
 .diary-error{color:#c8536a;font-size:.85rem;margin-top:8px;display:none}
+/* SPECIAL DAYS COUNTER */
+.sdc-wrap{padding:65px 18px;background:linear-gradient(180deg,#fff5f7,var(--cream));text-align:center}
+.sdc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:700px;margin:25px auto 0}
+.sdc-card{background:#fff;border-radius:22px;padding:24px 18px;box-shadow:0 4px 20px rgba(200,83,106,.08);border:1px solid rgba(200,83,106,.1);transition:.3s;position:relative;overflow:hidden}
+.sdc-card:hover{transform:translateY(-5px);box-shadow:0 12px 30px rgba(200,83,106,.15)}
+.sdc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--gold))}
+.sdc-icon{font-size:2.2rem;margin-bottom:10px}
+.sdc-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--deep);line-height:1}
+.sdc-unit{font-size:.72rem;color:#aaa;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.sdc-label{font-family:'Dancing Script',cursive;font-size:1.1rem;color:var(--rose)}
+.sdc-date{font-size:.72rem;color:#ccc;margin-top:4px;font-style:italic}
 </style>
 </head>
 <body>
@@ -472,6 +483,46 @@ footer span{color:var(--rose)}
     <textarea class="diary-write" id="diaryWrite" placeholder="Aaj kya feel hua? Likho… 💕"></textarea>
     <button class="diary-btn" onclick="saveDiaryEntry()">💾 Save Entry</button>
     <div id="diaryEntries" style="margin-top:20px"></div>
+  </div>
+</div>
+ <!-- SPECIAL DAYS COUNTER -->
+<div class="sdc-wrap">
+  <div class="badge" style="display:block;text-align:center">Hamare Khaas Din</div>
+  <div class="stitle" style="text-align:center">Special Days Counter 🎂</div>
+  <div class="sdc-grid">
+
+    <div class="sdc-card">
+      <div class="sdc-icon">💍</div>
+      <div class="sdc-num" id="sdMangni">0</div>
+      <div class="sdc-unit">Din</div>
+      <div class="sdc-label">Mangni Ko Hue</div>
+      <div class="sdc-date">19 April 2025 se</div>
+    </div>
+
+    <div class="sdc-card">
+      <div class="sdc-icon">🌙</div>
+      <div class="sdc-num" id="sdPehli">0</div>
+      <div class="sdc-unit">Din</div>
+      <div class="sdc-label">Pehli Baat Ko</div>
+      <div class="sdc-date">27 August 2024 se</div>
+    </div>
+
+    <div class="sdc-card">
+      <div class="sdc-icon">💒</div>
+      <div class="sdc-num" id="sdNikah">0</div>
+      <div class="sdc-unit">Din Baaki</div>
+      <div class="sdc-label">Nikah Mein</div>
+      <div class="sdc-date">12 November 2026 tak</div>
+    </div>
+
+    <div class="sdc-card">
+      <div class="sdc-icon">🎂</div>
+      <div class="sdc-num" id="sdBday">0</div>
+      <div class="sdc-unit">Din Baaki</div>
+      <div class="sdc-label">Birthday Mein</div>
+      <div class="sdc-date">4 October 2026 tak</div>
+    </div>
+
   </div>
 </div>
  <footer>Made with <span>❤️</span> for the sweetest mess ever — <span>S & M Forever 🌹</span><br><br>
@@ -764,6 +815,24 @@ async function loadDiaryEntries(){
     </div>`).join('') 
   : '<p style="color:#bbb;text-align:center;font-style:italic">Abhi koi entry nahi 💕</p>';
 }
+// SPECIAL DAYS COUNTER
+function calcDays(){
+  const now = Date.now();
+
+  const mangni = new Date('2025-04-19T00:00:00+05:00').getTime();
+  document.getElementById('sdMangni').textContent = Math.floor((now - mangni) / 86400000);
+
+  const pehli = new Date('2025-06-30T00:12:35+05:00').getTime();
+  document.getElementById('sdPehli').textContent = Math.floor((now - pehli) / 86400000);
+
+  const nikah = new Date('2026-11-12T00:00:00+05:00').getTime();
+  document.getElementById('sdNikah').textContent = Math.floor((nikah - now) / 86400000);
+
+  const bday = new Date('2026-10-04T00:00:00+05:00').getTime();
+  document.getElementById('sdBday').textContent = Math.floor((bday - now) / 86400000);
+}
+calcDays();
+setInterval(calcDays, 60000);
 </script>
 <!-- LOVE TICKER -->
 <div class="ticker-wrap">
