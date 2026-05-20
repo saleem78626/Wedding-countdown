@@ -1781,6 +1781,62 @@ document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
     return `#${((r<<16)|(g<<8)|b).toString(16).padStart(6,'0')}`;
   }
 })();
+  <script>
+function calcLove(){
+  const n1 = document.getElementById('name1').value.trim();
+  const n2 = document.getElementById('name2').value.trim();
+  if(!n1 || !n2){ alert("Dono naam likho"); return; }
+
+  const combined = (n1 + " " + n2).toLowerCase();
+
+  const saleemNames = ['saleem','nikamma','mendak','sadella'];
+  const mairaNames = ['maira','anarkali','kamwali','mendakni','janu jermon','miss important'];
+
+  let isSaleem = saleemNames.some(x => combined.includes(x));
+  let isMaira = mairaNames.some(x => combined.includes(x));
+
+  let percent;
+  if(isSaleem && isMaira){
+    percent = 100;
+  } else {
+    let sum = 0;
+    for(let i=0;i<(n1+n2).length;i++){ sum += (n1+n2).charCodeAt(i); }
+    percent = (sum % 41) + 60;
+  }
+
+  let msg = `${n1} aur ${n2} ki bonding strong lag rahi hai 💕`;
+  if(percent >= 100) msg = `${n1} ❤️ ${n2} — Perfect jodi!`;
+
+  document.getElementById('loveResult').style.display = 'block';
+  document.getElementById('lovePercent').innerText = percent + '%';
+  document.getElementById('loveMsg').innerText = msg;
+  document.getElementById('loveEmoji').innerText = percent >= 90 ? '😍' : '🥰';
+  document.getElementById('loveBar').style.width = '0%';
+  setTimeout(()=> document.getElementById('loveBar').style.width = percent + '%', 100);
+}
+</script>
      </script>
+<section id="love" style="padding:60px 20px;background:linear-gradient(135deg,#220011,#3a0d1f);color:white;text-align:center">
+  <h2 style="font-size:2rem;margin-bottom:10px">❤️ Love Calculator</h2>
+  <p style="opacity:.8;margin-bottom:25px">Naam likho aur dekhon compatibility ✨</p>
+
+  <div style="max-width:500px;margin:auto;background:rgba(255,255,255,.08);padding:25px;border-radius:22px">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <input id="name1" placeholder="Tumhara naam" style="padding:12px;border-radius:30px;border:none;width:200px;text-align:center">
+      <input id="name2" placeholder="Uska naam" style="padding:12px;border-radius:30px;border:none;width:200px;text-align:center">
+    </div>
+
+    <button onclick="calcLove()" style="margin-top:18px;padding:12px 30px;border:none;border-radius:30px;background:#ff4d79;color:#fff;font-size:1rem;cursor:pointer">Check Love 💘</button>
+
+    <div id="loveResult" style="display:none;margin-top:25px">
+      <div id="loveEmoji" style="font-size:45px">❤️</div>
+      <div id="lovePercent" style="font-size:55px;font-weight:bold">0%</div>
+      <div style="height:12px;background:#ffffff22;border-radius:20px;overflow:hidden;margin:14px auto;max-width:350px">
+        <div id="loveBar" style="height:100%;width:0;background:linear-gradient(90deg,#ff4d79,#ffd700);transition:1.5s"></div>
+      </div>
+      <p id="loveMsg" style="line-height:1.7;font-size:1rem;color:#ffd7e0"></p>
+    </div>
+  </div>
+</section>
 </body>
 </html>
