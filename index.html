@@ -217,6 +217,330 @@ footer span{color:var(--rose)}
 .tl-img{width:100%;border-radius:12px;margin-bottom:10px;object-fit:cover;max-height:200px;display:none}
 .tl-img.loaded{display:block}
 .tl-desc{font-size:.88rem;color:#888;line-height:1.7}
+.letters-section {
+  padding: 70px 18px 80px;
+  background: linear-gradient(180deg, var(--cream) 0%, #fff5f7 100%);
+  position: relative;
+  overflow: hidden;
+}
+.letters-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 20% 20%, rgba(200,83,106,0.04) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(200,83,106,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.letters-sub {
+  text-align: center;
+  color: #aaa;
+  font-size: .85rem;
+  font-style: italic;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.letter-card {
+  border-radius: 24px;
+  padding: 28px 24px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.letter-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.25) !important;
+}
+.letter-card:active { transform: scale(0.98); }
+.letter-card::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -60%;
+  width: 40%; height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.8s ease;
+}
+.letter-card:hover::after { left: 140%; }
+.lc-locked-content { position: relative; z-index: 2; }
+.lc-lock-icon {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  display: block;
+  animation: lockFloat 3s ease-in-out infinite alternate;
+}
+@keyframes lockFloat {
+  from { transform: translateY(0) rotate(-3deg); }
+  to { transform: translateY(-6px) rotate(3deg); }
+}
+.lc-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.lc-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.lc-countdown-wrap {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.lc-countdown-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.lc-countdown-nums {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.lc-cd-unit { text-align: center; }
+.lc-cd-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  line-height: 1;
+}
+.lc-cd-label {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Poppins', sans-serif;
+}
+.lc-cd-sep {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.3);
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 2px;
+}
+.lc-unlocked-content { position: relative; z-index: 2; display: none; }
+.lc-open-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  display: block;
+  animation: openPulse 2s ease-in-out infinite alternate;
+}
+@keyframes openPulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.lc-open-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 4px;
+}
+.lc-open-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.lc-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.9);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+  backdrop-filter: blur(4px);
+}
+.lc-open-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
+}
+.lc-bg-pattern {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.08;
+  background-image: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.2) 0%, transparent 40%);
+}
+@keyframes unlockGlow {
+  0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+  50% { box-shadow: 0 0 30px 10px rgba(255,255,255,0.15); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.0); }
+}
+.letter-card.just-unlocked { animation: unlockGlow 2s ease-out; }
+.letter-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.letter-modal.open { display: flex; }
+.letter-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.letter-modal-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: letterRise 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  scrollbar-width: none;
+}
+.letter-modal-inner::-webkit-scrollbar { display: none; }
+@keyframes letterRise {
+  from { opacity: 0; transform: translateY(60px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.letter-paper {
+  background: #fdf8f2;
+  border-radius: 24px;
+  padding: 40px 32px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(200,83,106,0.1);
+  background-image: linear-gradient(rgba(200,83,106,0.03) 1px, transparent 1px);
+  background-size: 100% 32px;
+}
+.letter-paper::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(90deg, var(--rose), #7a2136, var(--rose));
+}
+.letter-close {
+  position: absolute;
+  top: 16px; left: 16px;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(200,83,106,0.1);
+  color: var(--rose);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.letter-close:hover { background: rgba(200,83,106,0.2); transform: scale(1.1); }
+.letter-paper-emoji {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 12px;
+  animation: emojiEntrance 0.6s ease 0.2s both;
+}
+@keyframes emojiEntrance {
+  from { transform: scale(0) rotate(-20deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+.letter-paper-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: var(--rose);
+  text-align: center;
+  margin-bottom: 4px;
+  animation: textFadeUp 0.5s ease 0.3s both;
+}
+.letter-paper-date {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  color: #bbb;
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: textFadeUp 0.5s ease 0.35s both;
+}
+@keyframes textFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.letter-paper-divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rose), transparent);
+  margin: 0 auto 24px;
+  animation: textFadeUp 0.5s ease 0.4s both;
+}
+.letter-paper-body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 2;
+  white-space: pre-line;
+  direction: ltr;
+  text-align: left;
+  animation: textFadeUp 0.5s ease 0.45s both;
+}
+.letter-paper-seal {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 28px;
+  animation: sealAppear 0.6s ease 0.5s both;
+}
+@keyframes sealAppear {
+  from { opacity: 0; transform: scale(0.5) rotate(180deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+.lc-confetti {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  animation: cfFall linear forwards;
+  border-radius: 2px;
+}
+@keyframes cfFall {
+  0% { opacity: 1; transform: translateY(-10px) rotate(0); }
+  100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+}
+@media(max-width: 480px) {
+  .letters-grid { grid-template-columns: 1fr; }
+  .letter-paper { padding: 32px 22px; }
+  .letter-paper-title { font-size: 1.5rem; }
+ }
 </style>
 </head>
 <body>
@@ -702,6 +1026,149 @@ footer span{color:var(--rose)}
 
   </div>
 </div>
+
+ <section id="letters" class="letters-section">
+
+  <div class="letters-header">
+    <div class="badge" style="display:block;text-align:center">Sirf Hamare Liye</div>
+    <div class="stitle" style="text-align:center">Secret Letters 💌</div>
+    <p class="letters-sub">Kuch baatein waqt ke saath khulti hain — jab waqt aayega, dil bhi padhega</p>
+  </div>
+
+  <div class="letters-grid">
+
+    <div class="letter-card" id="lc1"
+      data-unlock="2026-06-30T00:00:00"
+      data-emoji="🌙"
+      data-color="#2d1b69"
+      data-accent="#9b7fe8"
+      data-title="Pehli Baat Ki Saalgirah"
+      data-subtitle="30 June 2026"
+      data-letter="Yaar meri jaan…
+
+Aaj se woh safar shuru hua tha jahan ek simple si baat dheere dheere meri poori duniya ban gayi. Shayad us waqt humein idea bhi nahi tha ke ek 'hello' itni gehri mohabbat mein badal jayega 🥹❤️
+
+Aaj bhi humari pehli chats yaad karta hoon to dil automatically smile kar deta hai. Tum sirf meri baaton ka hissa nahi bani… tum meri aadat, mera sukoon aur meri roz ki khushi ban gayi.
+
+Kabhi kabhi lagta hai Allah ne meri zindagi mein tumhein bohat pyar se bheja tha… itna pyar ke ab tumhare bina har cheez adhuri si lagti hai. Aur sach kahun to meri favourite jagah ab koi place nahi… tum ho 🫂🌙">
+    </div>
+
+    <div class="letter-card" id="lc2"
+      data-unlock="2026-08-30T00:00:00"
+      data-emoji="👑"
+      data-color="#4a1942"
+      data-accent="#e879c0"
+      data-title="Meri Drama Queen 👑"
+      data-subtitle="30 August 2026"
+      data-letter="Meri pyari Drama Queen 👑🥲
+
+Aaj bhi woh 'Naraz hi theek hu' wali line yaad aati hai to hasi bhi aati hai aur pyaar bhi 😭❤️ Tumhara naraz hona bhi full drama hota hai — pehle attitude, phir emojis, phir thodi dair baad khud hi maan jana 🤭
+
+Lekin sach kahun? Mujhe tumhara ye drama bohat pasand hai. Kyun ke uske peeche bhi pyaar hi hota hai. Tum jitna 'naraz' bolti ho na, utna hi zyada care karti ho. Aur phir mera 'Meri Drama Queen 👑🥲' kehna almost tumhara mood theek kar deta tha 😭❤️
+
+Bas meri ek hi wish hai — chahe kitna bhi drama ho, kitni bhi nok jhok ho… end mein tum meri hi rehna. Kyun ke meri life without my Drama Queen bohat boring ho jayegi 🫂👑">
+    </div>
+
+    <div class="letter-card" id="lc3"
+      data-unlock="2026-09-01T00:00:00"
+      data-emoji="💌"
+      data-color="#1a3a2a"
+      data-accent="#4ade80"
+      data-title="Dil Ki Baatein"
+      data-subtitle="1 September 2026"
+      data-letter="Yaar meri jaan…
+
+Aaj bhi mujhe tumhari woh baat word by word yaad hai — 'Mohabbat deinge to double degi.' 🥹❤️
+
+Aur sach kahun to us din mujhe feel hua tha ke tum sirf pyaar lena nahi janti… tum dil se nibhana bhi janti ho. Tumhari choti choti wishes — bina wajah phool lana, gajra lana, ice cream khilana — ye sab sun kar mujhe laga tha ke asli mohabbat wahi hoti hai jahan effort mehenga nahi hota, bas dil sachcha hota hai.
+
+Aur yaad hai maine kya kaha tha? 'Main tumhein mushkil nahi, sukoon samajhta hoon.' ❤️
+
+Aaj bhi wahi feel karta hoon. Tum meri life ka pressure nahi ho, tum meri life ka softest part ho. Tum wo feeling ho jo ghar jaisi lagti hai 🫂🌸">
+    </div>
+
+    <div class="letter-card" id="lc4"
+      data-unlock="2026-09-04T00:00:00"
+      data-emoji="😤"
+      data-color="#3a1a0a"
+      data-accent="#fb923c"
+      data-title="Fine System Saalgirah 😤"
+      data-subtitle="4 September 2026"
+      data-letter="Acha jiiii 😭❤️
+
+Aaj humare legendary Fine System ko officially ek saal hogaya… aur is historic din par tum par ek special saalgirah fine lagta hai 🤭💸
+
+Fine ye hai ke aaj full achay se ready ho kar sirf mere liye ek pyari si video bhejni hogi 😌❤️
+
+Aur haan koi 'sharam arahi hai' ya 'mood nahi hai' wale excuses accept nahi honge 😭👑 kyun ke Fine System ki court mein appeal reject hoti hai 🫠
+
+Sach kahun to mujhe tumhara ready hona, sharmana aur phir halka sa smile karna bohat pasand hai. Video sirf video nahi hoti meri jaan… wo meri poori din ki khushi ban jati hai 🥹🫂
+
+To jaldi se meri pyari Drama Queen ready ho aur apna saalgirah fine submit kare 🎥👑🫶">
+    </div>
+
+    <div class="letter-card" id="lc5"
+      data-unlock="2026-10-04T00:00:00"
+      data-emoji="🎂"
+      data-color="#1a1a3a"
+      data-accent="#818cf8"
+      data-title="Happy Birthday Meri Jaan 🎂"
+      data-subtitle="4 October 2026"
+      data-letter="Congratulations on surviving another year with your Drama King 😭❤️🎉
+
+4th October 🌸
+
+Woh din jab meri zindagi ki sab se pyari larki is duniya mein aayi… meri chand si, ronti si, drama queen si jaan 🫂🌙
+
+Sach kahun to tumhara birthday mere liye sirf ek date nahi hoti… ye woh din hai jis din Allah ne meri zindagi ke sukoon ko duniya mein bheja tha.
+
+Main dil se dua karta hoon ke tum hamesha hasti raho, tumhara dil kabhi udaas na ho aur tumhein zindagi har woh khushi de jo tum deserve karti ho. Aur agar kabhi zindagi thaka bhi de na, to main hamesha tumhara safe place ban kar rahun 🫂❤️
+
+Mujhe ab bhi future ka woh scene imagine kar ke hasi aati hai jab hum dono buddhe ho jayenge 😭🤭 tum bagair danton ke 'Ayein Ayein' kar rahi hogi aur main phir bhi tumhein chocolates khila raha honga 🍫😂
+
+Happy Birthday habibti chérie 🥹💌
+
+I love you itna saaaaara ke words bhi short lagte hain 🫂🎂🌸❤️">
+    </div>
+
+    <div class="letter-card" id="lc6"
+      data-unlock="2026-11-12T00:00:00"
+      data-emoji="💍"
+      data-color="#1a0a0a"
+      data-accent="#f43f5e"
+      data-title="Meri Humsafar ❤️"
+      data-subtitle="12 November 2026 — Nikah"
+      data-letter="Meri Humsafar ❤️💒
+
+Aaj se pehle tum meri mohabbat thi… aaj se tum meri zindagi ho. Kitna ajeeb aur khoobsurat ehsaas hai na ke jis insaan ko har dua mein manga, aaj woh officially mera ho gaya 🥹
+
+Main wada karta hoon ke sirf achay waqt mein nahi, har mushkil mein tumhare saath khara rahunga. Tumhara haath kabhi nahi chhorunga, tumhein kabhi akela feel nahi hone dunga. Tum naraz hogi to manaunga, udaas hogi to hasane ki koshish karunga, aur jab thak jaogi na… to tumhara sukoon ban jaunga 🫂❤️
+
+Mujhe duniya ki perfect cheez nahi chahiye thi… mujhe bas tum chahiye thi. Aur aaj jab tum meri biwi ho, to lagta hai jaise meri har dua poori ho gayi.
+
+Aaj se tum sirf meri jaan nahi… mera ghar, mera sukoon, meri poori duniya ho. Aur jab bhi zindagi thakaye gi na, hum dono ek dusre ko phir se sambhal lenge.
+
+I love you meri biwi… ab aur hamesha ke liye ❤️💍🫂">
+    </div>
+
+  </div>
+
+  <div class="letter-modal" id="letterModal">
+    <div class="letter-modal-backdrop" onclick="closeLetter()"></div>
+    <div class="letter-modal-inner" id="letterModalInner">
+      <div class="letter-paper" id="letterPaper">
+        <button class="letter-close" onclick="closeLetter()">✕</button>
+        <div class="letter-paper-emoji" id="modalEmoji"></div>
+        <div class="letter-paper-title" id="modalTitle"></div>
+        <div class="letter-paper-date" id="modalDate"></div>
+        <div class="letter-paper-divider"></div>
+        <div class="letter-paper-body" id="modalBody"></div>
+        <div class="letter-paper-seal">💌</div>
+      </div>
+    </div>
+  </div>
+
+     </section>
  <footer>Made with <span>❤️</span> for the sweetest mess ever — <span>S & M Forever 🌹</span><br><br>
 <span style="font-family:'Dancing Script',cursive;font-size:1rem;color:#444">"Do pagal… ek mohabbat… aur hazaron sweet disasters!"</span></footer>
 
@@ -1042,5 +1509,147 @@ document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
     <div class="ticker-item">✨ Sweet Mess — S ❤️ M Forever <span>•</span></div>
   </div>
 </div>
+
+ <script>
+(function(){
+  const cards = document.querySelectorAll('.letter-card');
+  cards.forEach(card => {
+    const unlockTime = new Date(card.dataset.unlock).getTime();
+    const emoji  = card.dataset.emoji;
+    const color  = card.dataset.color;
+    const accent = card.dataset.accent;
+    const title  = card.dataset.title;
+    const sub    = card.dataset.subtitle;
+    card.style.background = `linear-gradient(145deg, ${color} 0%, ${adjustColor(color, 20)} 100%)`;
+    card.style.boxShadow  = `0 15px 40px ${color}60, 0 0 0 1px ${accent}30`;
+    const pat = document.createElement('div');
+    pat.className = 'lc-bg-pattern';
+    card.appendChild(pat);
+    const locked = document.createElement('div');
+    locked.className = 'lc-locked-content';
+    locked.innerHTML = `
+      <span class="lc-lock-icon">🔒</span>
+      <div class="lc-title">${title}</div>
+      <div class="lc-subtitle">${sub}</div>
+      <div class="lc-countdown-wrap">
+        <div class="lc-countdown-label">✨ Khulne mein baaki</div>
+        <div class="lc-countdown-nums">
+          <div class="lc-cd-unit"><div class="lc-cd-num" id="d_${card.id}">--</div><div class="lc-cd-label">Din</div></div>
+          <div class="lc-cd-sep">:</div>
+          <div class="lc-cd-unit"><div class="lc-cd-num" id="h_${card.id}">--</div><div class="lc-cd-label">Ghante</div></div>
+          <div class="lc-cd-sep">:</div>
+          <div class="lc-cd-unit"><div class="lc-cd-num" id="m_${card.id}">--</div><div class="lc-cd-label">Min</div></div>
+          <div class="lc-cd-sep">:</div>
+          <div class="lc-cd-unit"><div class="lc-cd-num" id="s_${card.id}">--</div><div class="lc-cd-label">Sec</div></div>
+        </div>
+      </div>
+    `;
+    card.appendChild(locked);
+    const unlocked = document.createElement('div');
+    unlocked.className = 'lc-unlocked-content';
+    unlocked.innerHTML = `
+      <span class="lc-open-emoji">${emoji}</span>
+      <div class="lc-open-title">${title}</div>
+      <div class="lc-open-subtitle">${sub}</div>
+      <button class="lc-open-btn" onclick="openLetter('${card.id}')">
+        💌 Letter Parho
+      </button>
+    `;
+    card.appendChild(unlocked);
+    const tick = setInterval(() => {
+      const now  = Date.now();
+      const diff = unlockTime - now;
+      if(diff <= 0){
+        clearInterval(tick);
+        revealCard(card, emoji, accent);
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000)  / 60000);
+      const s = Math.floor((diff % 60000)    / 1000);
+      const dEl = document.getElementById(`d_${card.id}`);
+      const hEl = document.getElementById(`h_${card.id}`);
+      const mEl = document.getElementById(`m_${card.id}`);
+      const sEl = document.getElementById(`s_${card.id}`);
+      if(dEl){ dEl.textContent = d; }
+      if(hEl){ hEl.textContent = String(h).padStart(2,'0'); }
+      if(mEl){ mEl.textContent = String(m).padStart(2,'0'); }
+      if(sEl){ sEl.textContent = String(s).padStart(2,'0'); }
+    }, 1000);
+    if(Date.now() >= unlockTime){
+      revealCard(card, emoji, accent);
+    }
+  });
+
+  function revealCard(card, emoji, accent){
+    const locked   = card.querySelector('.lc-locked-content');
+    const unlocked = card.querySelector('.lc-unlocked-content');
+    if(locked)   locked.style.display   = 'none';
+    if(unlocked) unlocked.style.display = 'block';
+    card.style.cursor = 'pointer';
+    card.style.boxShadow = `0 15px 40px ${accent}50, 0 0 0 1px ${accent}60`;
+    card.classList.add('just-unlocked');
+    card.style.animation = 'unlockGlow 1.5s ease-out';
+    if(!card.dataset.revealed){
+      card.dataset.revealed = '1';
+      launchConfetti(accent);
+    }
+    card.onclick = () => openLetter(card.id);
+  }
+
+  window.openLetter = function(cardId){
+    const card = document.getElementById(cardId);
+    if(!card) return;
+    document.getElementById('modalEmoji').textContent  = card.dataset.emoji;
+    document.getElementById('modalTitle').textContent  = card.dataset.title;
+    document.getElementById('modalDate').textContent   = card.dataset.subtitle;
+    document.getElementById('modalBody').textContent   = card.dataset.letter;
+    const modal = document.getElementById('letterModal');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeLetter = function(){
+    const modal = document.getElementById('letterModal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') closeLetter();
+  });
+
+  function launchConfetti(accentColor){
+    const colors = [accentColor, '#f43f5e', '#c8536a', '#fff', '#fbbf24'];
+    for(let i = 0; i < 50; i++){
+      setTimeout(() => {
+        const p = document.createElement('div');
+        p.className = 'lc-confetti';
+        const sz = Math.random() * 8 + 4;
+        p.style.cssText = `
+          left: ${Math.random() * 100}%;
+          width: ${sz}px;
+          height: ${sz}px;
+          background: ${colors[Math.floor(Math.random() * colors.length)]};
+          animation-duration: ${Math.random() * 2 + 2}s;
+          animation-delay: ${Math.random() * 0.5}s;
+          border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+        `;
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 4000);
+      }, i * 40);
+    }
+  }
+
+  function adjustColor(hex, amount){
+    const n = parseInt(hex.slice(1), 16);
+    const r = Math.min(255, ((n >> 16) & 0xff) + amount);
+    const g = Math.min(255, ((n >> 8)  & 0xff) + amount);
+    const b = Math.min(255, (n & 0xff)          + amount);
+    return `#${((r<<16)|(g<<8)|b).toString(16).padStart(6,'0')}`;
+  }
+})();
+     </script>
 </body>
 </html>
